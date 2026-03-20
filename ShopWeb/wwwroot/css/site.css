@@ -112,6 +112,122 @@ html, body {
     text-decoration: none;
 }
 
+/*Login Page*/
+.login-page {
+    width: 60%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 20px;
+    position: fixed; /* 🔥 quan trọng */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 50;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 40;
+}
+
+.error {
+    color: #ff4d4f;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+.login-page form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+}
+
+.btn-x {
+    position: absolute;
+    top: 6px;
+    right: 12px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-x svg {
+    width: 20px;
+    height: 20px;
+    color: black;
+}
+
+.login-info {
+    text-align: center;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.login-form input {
+    border-radius: 10px;
+    padding: 6px 10px;
+    font-size: 1rem;
+    outline: none;
+    border: 1px solid #000000;
+    transition: all .3s;
+}
+
+.login-form input:hover {
+    background: rgba(128, 128, 128, 0.4);
+}
+
+
+.login-function {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.login-function a {
+    padding: 10px 10px;
+    font-size: 12px;
+    text-decoration: none;
+    font-style: inherit;
+}
+
+.login-function a:hover {
+    text-decoration: underline;
+
+}
+
+.btn-login {
+    padding: 8px 12px;
+    border-radius: 10px;
+    width: 100%;
+    background: white;
+    transition: all .3s;
+
+}
+
+.btn-login:hover {
+    background: rgba(128, 128, 128, 0.4); /* phải trong suốt */
+    backdrop-filter: blur(10px);
+    color: white;
+    font-weight: bold
+}
+
 /* 🔥 Footer */
 .footer {
     display: flex;

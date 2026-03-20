@@ -1,5 +1,8 @@
 ﻿let count = 0;
-
+const btnClose = document.querySelector(".btn-x")
+const loginContainer = document.querySelector('.login-page')
+const btnOpen = document.querySelector('.btn-open')
+const overlay = document.querySelector('.overlay')
 function addToCart() {
     count++;
     document.getElementById("cart-count").innerText = count;
@@ -37,3 +40,17 @@ document.querySelectorAll('.product-name').forEach(function(el) {
         });
     }
 });
+
+btnOpen.addEventListener('click', (e) => {
+    e.preventDefault()
+    loginContainer.classList.remove('hidden')
+    overlay.classList.remove('hidden')
+})
+function closePageLogin() {
+    loginContainer.classList.add('hidden')
+    overlay.classList.add('hidden')
+}
+
+overlay.addEventListener('click', closePageLogin)
+
+btnClose.addEventListener('click', closePageLogin)
