@@ -3,6 +3,11 @@ const btnClose = document.querySelector(".btn-x")
 const loginContainer = document.querySelector('.login-page')
 const btnOpen = document.querySelector('.btn-open')
 const overlay = document.querySelector('.overlay')
+const form = document.querySelector('form')
+const emailInput = document.getElementById('email')
+const passwordInput = document.getElementById('password')
+const errorMessage = document.getElementById('error-msg')
+
 function addToCart() {
     count++;
     document.getElementById("cart-count").innerText = count;
@@ -54,3 +59,35 @@ function closePageLogin() {
 overlay.addEventListener('click', closePageLogin)
 
 btnClose.addEventListener('click', closePageLogin)
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault()
+
+    const email = emailInput.value
+    const password = passwordInput.value
+
+    try {
+        const res = await fetch("https://localhost:7214/api/auth/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ email, password })
+        })
+
+        const data = await res.json()
+
+        if (!res.ok) throw new Error(data.message || "Sai tài khoản hoặc mật khẩu")
+
+
+        errorMessage.classList.add('hidden')
+
+        alert("Đăng nhập thành công!")
+
+        closePageLogin()
+    }
+    catch (err) {
+        errorMessage.textContent = err.message
+        errorMessage.classList.remove("hidden")
+    }
+})

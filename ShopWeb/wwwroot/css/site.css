@@ -114,7 +114,7 @@ html, body {
 
 /*Login Page*/
 .login-page {
-    width: 60%;
+    width: 30%;
     background-color: white;
     display: flex;
     justify-content: center;
@@ -124,11 +124,20 @@ html, body {
     position: fixed; /* 🔥 quan trọng */
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1);
     z-index: 50;
+    transition: all .3s ease;
 }
 
+    .login-page.hidden {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+        visibility: hidden;
+        pointer-events: none;
+    }
+
 .overlay {
+    opacity: 1;
     position: fixed;
     top: 0;
     left: 0;
@@ -136,17 +145,28 @@ html, body {
     bottom: 0;
     background: rgba(0,0,0,0.7);
     z-index: 40;
+    transition: opacity .3s ease;
 }
+
+    .overlay.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
 
 .error {
     color: #ff4d4f;
     font-size: 13px;
-    margin-top: 5px;
+    margin: 5px 0 0 0;
+    transition: all 0.3s;
+    text-align: center;
 }
 
-.hidden {
-    display: none;
-}
+    .error.hidden {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
 
 .login-page form {
     display: flex;
@@ -193,6 +213,10 @@ html, body {
     background: rgba(128, 128, 128, 0.4);
 }
 
+    .login-form input:focus {
+        border: 1px solid #2563eb;
+        box-shadow: 0 0 5px rgba(37, 99, 235, 0.5);
+    }
 
 .login-function {
     display: flex;
@@ -213,16 +237,17 @@ html, body {
 }
 
 .btn-login {
-    padding: 8px 12px;
-    border-radius: 10px;
-    width: 100%;
-    background: white;
-    transition: all .3s;
-
+    background: #44ACFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 4px;
 }
 
+
+
 .btn-login:hover {
-    background: rgba(128, 128, 128, 0.4); /* phải trong suốt */
+    background: rgba(128, 128, 128, 0.4);
     backdrop-filter: blur(10px);
     color: white;
     font-weight: bold
