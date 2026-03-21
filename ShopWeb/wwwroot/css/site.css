@@ -101,16 +101,25 @@ html, body {
 .navbar {
     display: flex;
     justify-content: space-between;
-    background: #333;
+    background: #06437a;
     padding: 10px;
     width: 100%;
 }
 
+/* 🔹 Font cho navbar */
 .navbar a {
-    color: white;
-    margin-right: 10px;
-    text-decoration: none;
+    font-family: 'Arial', sans-serif;  
+    font-size: 16px;                    
+    color: #ffffff;                       
+    text-decoration: none;              
+    padding: 8px 12px;
+    transition: color 0.3s;             
 }
+
+.navbar a:hover {
+    color: #f6ff00;  
+}
+
 
 /*Login Page*/
 .login-page {

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bGZOOe/iT3o=",
+  "dgSpecHash": "ljqs+rkLLZs=",
   "success": true,
-  "projectFilePath": "D:\\HOCTAP\\HocTapReal\\Nam2-2025\\HK2\\Agile\\UI\\ShopWeb\\ShopWeb.csproj",
+  "projectFilePath": "D:\\HOCTAP\\HocTapReal\\Nam2-2025\\HK2\\Agile\\test\\FastFoodOrdering.UI\\ShopWeb\\ShopWeb.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LONG\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\LONG\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
