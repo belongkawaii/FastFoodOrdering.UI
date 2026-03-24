@@ -65,6 +65,16 @@ html, body {
     position: relative;
 }
 
+.product-price {
+    color: #ee4d2d;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.currency {
+    font-size: 14px;
+}
+
 .product button {
     padding: 5px 10px;
     background: orange;

@@ -32,5 +32,7 @@ namespace ShopWeb.Pages   // 🔥 nhớ đúng namespace project của bạn
     {
         public string title { get; set; } = "";
         public string image { get; set; } = "";
+
+        public decimal price { get; set; }
     }
 }

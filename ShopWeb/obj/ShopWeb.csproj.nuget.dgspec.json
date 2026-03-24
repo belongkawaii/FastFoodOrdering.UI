@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\HOCTAP\\HocTapReal\\Nam2-2025\\HK2\\Agile\\test\\FastFoodOrdering.UI\\ShopWeb\\ShopWeb.csproj": {}
+    "D:\\HOCTAP\\HocTapReal\\Nam2-2025\\HK2\\Agile\\FastFoodOrdering\\FastFoodOrdering.UI\\ShopWeb\\ShopWeb.csproj": {}
   },
   "projects": {
-    "D:\\HOCTAP\\HocTapReal\\Nam2-2025\\HK2\\Agile\\test\\FastFoodOrdering.UI\\ShopWeb\\ShopWeb.csproj": {
+    "D:\\HOCTAP\\HocTapReal\\Nam2-2025\\HK2\\Agile\\FastFoodOrdering\\FastFoodOrdering.UI\\ShopWeb\\ShopWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\HOCTAP\\HocTapReal\\Nam2-2025\\HK2\\Agile\\test\\FastFoodOrdering.UI\\ShopWeb\\ShopWeb.csproj",
+        "projectUniqueName": "D:\\HOCTAP\\HocTapReal\\Nam2-2025\\HK2\\Agile\\FastFoodOrdering\\FastFoodOrdering.UI\\ShopWeb\\ShopWeb.csproj",
         "projectName": "ShopWeb",
-        "projectPath": "D:\\HOCTAP\\HocTapReal\\Nam2-2025\\HK2\\Agile\\test\\FastFoodOrdering.UI\\ShopWeb\\ShopWeb.csproj",
+        "projectPath": "D:\\HOCTAP\\HocTapReal\\Nam2-2025\\HK2\\Agile\\FastFoodOrdering\\FastFoodOrdering.UI\\ShopWeb\\ShopWeb.csproj",
         "packagesPath": "C:\\Users\\LONG\\.nuget\\packages\\",
-        "outputPath": "D:\\HOCTAP\\HocTapReal\\Nam2-2025\\HK2\\Agile\\test\\FastFoodOrdering.UI\\ShopWeb\\obj\\",
+        "outputPath": "D:\\HOCTAP\\HocTapReal\\Nam2-2025\\HK2\\Agile\\FastFoodOrdering\\FastFoodOrdering.UI\\ShopWeb\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
