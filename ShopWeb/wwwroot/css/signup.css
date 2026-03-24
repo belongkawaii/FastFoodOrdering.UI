@@ -111,3 +111,17 @@ body {
     height: 100%;
     object-fit: cover;
 }
+
+/*error*/
+.error {
+    color: #ff4d4f;
+    font-size: 13px;
+    margin: 5px 0 0 0;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+    .error.hidden {
+        opacity: 0;
+        transform: translateY(-5px);
+    }

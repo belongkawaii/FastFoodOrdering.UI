@@ -9,6 +9,7 @@ public class SignupModel : PageModel
     [BindProperty]
     public string Email { get; set; }
 
+    public string Phone { get; set; }
     [BindProperty]
     public string Password { get; set; }
 
@@ -28,6 +29,6 @@ public class SignupModel : PageModel
         }
 
         // lưu database sau
-        return RedirectToPage("/Signin");
+        return RedirectToPage("/Index");
     }
 }

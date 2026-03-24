@@ -37,15 +37,19 @@
 
                 <h2>Đăng ký</h2>
 
-                <form method="post">
+                <form id="form-register">
 
-                    <input type="text" placeholder="Tên đăng nhập" asp-for="Username" />
+                    <input type="text" placeholder="Tên đăng nhập" id="fullName" />
 
-                    <input type="email" placeholder="Email" asp-for="Email" />
+                    <input type="email" placeholder="Email" id="email" />
 
-                    <input type="password" placeholder="Mật khẩu" asp-for="Password" />
+                    <input type="text" placeholder="Số điện thoại" id="phone" />
 
-                    <input type="password" placeholder="Xác nhận mật khẩu" asp-for="ConfirmPassword" />
+                    <input type="password" placeholder="Mật khẩu" id="password"/>
+
+                    <input type="password" placeholder="Xác nhận mật khẩu" id="confirmPassword" />
+
+                    <p id="error-message" class="error hidden"></p>
 
                     <button type="submit">Đăng ký</button>
 
@@ -74,3 +78,6 @@
         </iframe>
     </div>
 </div>
+
+
+<script src="~/js/signup.js"></script>
