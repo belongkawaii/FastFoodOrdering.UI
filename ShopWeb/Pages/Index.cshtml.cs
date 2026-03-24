@@ -19,20 +19,17 @@ namespace ShopWeb.Pages   // 🔥 nhớ đúng namespace project của bạn
         /*hàm gọi API lấy dữ liệu sản phẩm*/
         public async Task OnGet() 
         {
-            var response = await _httpClient.GetStringAsync("https://fakestoreapi.com/products");
-
-            Products = JsonSerializer.Deserialize<List<Product>>(response, new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            });
+            var response = await _httpClient.GetFromJsonAsync<List<Product>>("http://localhost:5014/api/products");
+            Products = response ?? new List<Product>();
         }
     }
 
     public class Product
     {
-        public string title { get; set; } = "";
-        public string image { get; set; } = "";
-
+        public int id { get; set; } 
+        public string name { get; set; } = "";
         public decimal price { get; set; }
+        public string imageUrl { get; set; } = "";
+        
     }
 }

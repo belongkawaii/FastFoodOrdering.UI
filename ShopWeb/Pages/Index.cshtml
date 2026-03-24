@@ -69,14 +69,15 @@
     <div class="products">
     @foreach (var p in Model.Products)
     {
+        string imageUrl = "http://localhost:5014" + p.imageUrl;
         <div class="product">
-            <img src="@p.image">
+            <img src="@imageUrl">
             <h4 class="product-name">
-                <span>@p.title</span>
+                <span>@p.name</span>
             </h4>
             <div class="product-price">
-            <span class="currency">$</span>
             <span class="amount">@p.price.ToString("0.00")</span>
+            <span class="currency">VND</span>
             </div>
             <button onclick="addToCart()">Đặt hàng</button>
         </div>
