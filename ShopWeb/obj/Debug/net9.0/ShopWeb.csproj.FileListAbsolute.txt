@@ -663,3 +663,4 @@ D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\Sh
 D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\ShopWeb.pdb
 D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\ShopWeb.genruntimeconfig.cache
 D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\ref\ShopWeb.dll
+D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\ny0o0sjmaz-0gj28h6kx6.gz
