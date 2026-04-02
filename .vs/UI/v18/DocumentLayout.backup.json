@@ -1,0 +1,122 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|d:\\hoc_tap\\2025-2026_hk2\\agile\\fastfoodordering.ui\\shopweb\\wwwroot\\js\\signup.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|solutionrelative:shopweb\\wwwroot\\js\\signup.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|d:\\hoc_tap\\2025-2026_hk2\\agile\\fastfoodordering.ui\\shopweb\\wwwroot\\css\\signup.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|solutionrelative:shopweb\\wwwroot\\css\\signup.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|d:\\hoc_tap\\2025-2026_hk2\\agile\\fastfoodordering.ui\\shopweb\\pages\\signup.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|solutionrelative:shopweb\\pages\\signup.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|d:\\hoc_tap\\2025-2026_hk2\\agile\\fastfoodordering.ui\\shopweb\\pages\\signup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|solutionrelative:shopweb\\pages\\signup.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|d:\\hoc_tap\\2025-2026_hk2\\agile\\fastfoodordering.ui\\shopweb\\pages\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|solutionrelative:shopweb\\pages\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|d:\\hoc_tap\\2025-2026_hk2\\agile\\fastfoodordering.ui\\shopweb\\pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|solutionrelative:shopweb\\pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml.cs",
+              "DocumentMoniker": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\Pages\\Index.cshtml.cs",
+              "RelativeDocumentMoniker": "ShopWeb\\Pages\\Index.cshtml.cs",
+              "ToolTip": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\Pages\\Index.cshtml.cs",
+              "RelativeToolTip": "ShopWeb\\Pages\\Index.cshtml.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAkwBcAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-02T18:35:58.961Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\Pages\\Index.cshtml",
+              "RelativeDocumentMoniker": "ShopWeb\\Pages\\Index.cshtml",
+              "ToolTip": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\Pages\\Index.cshtml",
+              "RelativeToolTip": "ShopWeb\\Pages\\Index.cshtml",
+              "ViewState": "AgIAADcAAAAAAAAAAADwv0oAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-02T18:31:57.874Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "signup.css",
+              "DocumentMoniker": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\wwwroot\\css\\signup.css",
+              "RelativeDocumentMoniker": "ShopWeb\\wwwroot\\css\\signup.css",
+              "ToolTip": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\wwwroot\\css\\signup.css",
+              "RelativeToolTip": "ShopWeb\\wwwroot\\css\\signup.css",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAAAIIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-04-02T18:13:39.256Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "signup.js",
+              "DocumentMoniker": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\wwwroot\\js\\signup.js",
+              "RelativeDocumentMoniker": "ShopWeb\\wwwroot\\js\\signup.js",
+              "ToolTip": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\wwwroot\\js\\signup.js",
+              "RelativeToolTip": "ShopWeb\\wwwroot\\js\\signup.js",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAAAFkAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-04-02T18:11:05.322Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Signup.cshtml",
+              "DocumentMoniker": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\Pages\\Signup.cshtml",
+              "RelativeDocumentMoniker": "ShopWeb\\Pages\\Signup.cshtml",
+              "ToolTip": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\Pages\\Signup.cshtml",
+              "RelativeToolTip": "ShopWeb\\Pages\\Signup.cshtml",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAmwFQAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-02T18:07:53.258Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Signup.cshtml.cs",
+              "DocumentMoniker": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\Pages\\Signup.cshtml.cs",
+              "RelativeDocumentMoniker": "ShopWeb\\Pages\\Signup.cshtml.cs",
+              "ToolTip": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\Pages\\Signup.cshtml.cs",
+              "RelativeToolTip": "ShopWeb\\Pages\\Signup.cshtml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-02T18:02:49.731Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -21,7 +21,7 @@ namespace ShopWeb.Pages   // 🔥 nhớ đúng namespace project của bạn
         /*hàm gọi API lấy dữ liệu sản phẩm*/
         public async Task OnGet() 
         {
-            var response = await _httpClient.GetFromJsonAsync<List<Product>>("https://localhost:7214/api/products");
+            var response = await _httpClient.GetFromJsonAsync<List<Product>>("http://localhost:5014/api/products");
             Products = response?.Select(p =>
             {
                 p.imageUrl = p.imageUrl.Replace("http://", "https://");

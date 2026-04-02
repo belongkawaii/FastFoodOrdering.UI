@@ -125,3 +125,7 @@ body {
         opacity: 0;
         transform: translateY(-5px);
     }
+
+.hidden {
+    display: none !important;
+}
