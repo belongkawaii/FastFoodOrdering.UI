@@ -17,8 +17,8 @@
         <a href="#">Trang chủ</a>
         <a href="#">Giới thiệu</a>
         <a href="#">Món ăn đề xuất</a>
-        <a href="#" class="cart">
-            🛒 Giỏ hàng <span id="cart-count">0</span>
+        <a asp-page="/Cart" class="cart">
+            🛒 Giỏ hàng <span id="cart-count">@Model.Carts.TotalQuantity</span>
         </a>
     </div>
 
@@ -35,22 +35,25 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
         </button>
-        <form>
+        <form method="post" asp-page-handler="Login">
             <div class="login-info">
                 <h1>Login</h1>
                 <p>Login to use our services.</p>
             </div>
             <div class="login-form">
-                <input placeholder="Email" type="email" id="email"/>
-                <input placeholder="Password" type="password" id="password" />
-                <p id="error-msg" class="error hidden"></p>
+                <input placeholder="Email" type="email" id="email" name="email"/>
+                <input placeholder="Password" type="password" id="password" name="password" />
+                @if (TempData["ErrorMessageLogin"] != null)
+                {
+                    <p class="error">@TempData["ErrorMessageLogin"]</p>
+                }
             </div>
         
             <div class="login-function">
                 <a href="#">Quên Mật Khẩu?</a>
                 <a href="#">Đăng Ký Tài Khoản</a>
             </div>
-            <button class="btn-login">Login</button>
+            <button class="btn-login" type="submit">Login</button>
         </form>
     </div>
     <div class="overlay hidden"></div>
@@ -69,7 +72,7 @@
     <div class="products">
     @foreach (var p in Model.Products)
     {
-        string imageUrl = "http://localhost:5014" + p.imageUrl;
+         string imageUrl = "https://localhost:7214" + p.imageUrl;
         <div class="product">
             <img src="@imageUrl">
             <h4 class="product-name">
@@ -79,7 +82,10 @@
             <span class="amount">@p.price.ToString("0.00")</span>
             <span class="currency">VND</span>
             </div>
-            <button onclick="addToCart()">Đặt hàng</button>
+            <form method="post">
+                <button type="submit" asp-page-handler="AddItem">Đặt hàng</button>
+                <input type="hidden" name="productId" value="@p.id" />
+            </form>
         </div>
         }
     </div>
@@ -109,3 +115,31 @@
 </div>
 
 <script src="~/js/site.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        // Lấy dữ liệu từ TempData thông qua Razor
+        var successMsg = "@Html.Raw(TempData["SuccessMsg"])";
+        var errorMsg = "@Html.Raw(TempData["ErrorMsg"])";
+
+        if (successMsg) {
+        Swal.fire({
+        icon: 'success',
+        title: 'Thành công!',
+        text: successMsg,
+        timer: 2000,
+        showConfirmButton: false
+        });
+        }
+
+        if (errorMsg) {
+        Swal.fire({
+        icon: 'error',
+        title: 'Rất tiếc...',
+        text: errorMsg,
+        confirmButtonColor: '#d33'
+        });
+        }
+        });
+    </script>

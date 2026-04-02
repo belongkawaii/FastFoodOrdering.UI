@@ -60,34 +60,34 @@ overlay.addEventListener('click', closePageLogin)
 
 btnClose.addEventListener('click', closePageLogin)
 
-form.addEventListener('submit', async (e) => {
-    e.preventDefault()
+//form.addEventListener('submit', async (e) => {
+//    e.preventDefault()
 
-    const email = emailInput.value
-    const password = passwordInput.value
+//    const email = emailInput.value
+//    const password = passwordInput.value
 
-    try {
-        const res = await fetch("https://localhost:7214/api/auth/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ email, password })
-        })
+//    try {
+//        const res = await fetch("https://localhost:7214/api/auth/login", {
+//            method: "POST",
+//            headers: {
+//                "Content-Type": "application/json"
+//            },
+//            body: JSON.stringify({ email, password })
+//        })
 
-        const data = await res.json()
+//        const data = await res.json()
 
-        if (!res.ok) throw new Error(data.message || "Sai tài khoản hoặc mật khẩu")
+//        if (!res.ok) throw new Error(data.message || "Sai tài khoản hoặc mật khẩu")
 
 
-        errorMessage.classList.add('hidden')
+//        errorMessage.classList.add('hidden')
 
-        alert("Đăng nhập thành công!")
+//        alert("Đăng nhập thành công!")
 
-        closePageLogin()
-    }
-    catch (err) {
-        errorMessage.textContent = err.message
-        errorMessage.classList.remove("hidden")
-    }
-})
+//        closePageLogin()
+//    }
+//    catch (err) {
+//        errorMessage.textContent = err.message
+//        errorMessage.classList.remove("hidden")
+//    }
+//})
