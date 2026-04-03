@@ -890,3 +890,4 @@ D:\Hoc_Tap\2025-2026_HK2\Agile\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\Shop
 D:\Hoc_Tap\2025-2026_HK2\Agile\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\ShopWeb.genruntimeconfig.cache
 D:\Hoc_Tap\2025-2026_HK2\Agile\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\ref\ShopWeb.dll
 D:\Hoc_Tap\2025-2026_HK2\Agile\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\08gbc3tuen-{0}-jtwhfl7nxs-jtwhfl7nxs.gz
+D:\Hoc_Tap\2025-2026_HK2\Agile\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\2dqnj11ecu-{0}-jgvlzkc65f-jgvlzkc65f.gz
