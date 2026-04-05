@@ -1,0 +1,84 @@
+﻿@page
+@model ShopWeb.Pages.SigninModel
+@{
+    ViewData["Title"] = "Đăng Nhập";
+}
+
+
+<link rel="stylesheet" href="~/css/signin.css" />
+
+<div class="banner">
+    <img id="banner-img" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200">
+</div>
+
+<!-- 🔥 Navbar -->
+<div class="navbar">
+    <div class="left">
+        <a asp-page="/Index">Trang chủ</a>
+        <a href="#">Giới thiệu</a>
+        <a href="#">Món ăn đề xuất</a>
+        <a asp-page="/Cart" class="cart">
+            🛒 Giỏ hàng <span id="cart-count">@Model.Carts.TotalQuantity</span>
+        </a>
+    </div>
+
+    <div class="right">
+        @{
+            var token = HttpContext.Request.Cookies["JWToken"];
+            var user = HttpContext.Request.Cookies["UserName"];
+        }
+
+        @if (!string.IsNullOrEmpty(token))
+        {
+            <span class="greeting">Xin chào, @user</span>
+            <a asp-page="/Logout">Đăng xuất</a>
+        }
+        else
+        {
+            <a asp-page="/Signin">Đăng nhập</a>
+            <a asp-page="/Signup">Đăng ký</a>
+        }
+    </div>
+</div>
+
+
+<div class="signin-container">
+    <form method="post" asp-page-handler="Login" class="signin-form">
+        
+        <h1>Đăng nhập</h1>
+
+        <input asp-for="Email" placeholder="Email" />
+        <span asp-validation-for="Email" class="error"></span>
+
+        <input asp-for="Password" type="password" placeholder="Mật khẩu" />
+        <span asp-validation-for="Password" class="error"></span>
+
+        @if (TempData["ErrorMessageLogin"] != null)
+        {
+            <p class="error">@TempData["ErrorMessageLogin"]</p>
+        }
+
+        <button type="submit">Đăng nhập</button>
+
+        <div class="extra">
+            <a href="#">Quên mật khẩu?</a>
+            <a asp-page="/Signup">Đăng ký</a>
+        </div>
+
+    </form>
+</div>
+
+
+<!-- 🔥 Footer -->
+<div class="footer">
+    <div class="left">
+        <h3>Đom Đóm nhỏ HCMUE</h3>
+        <p>SĐT: 0999999999</p>
+        <p>Địa chỉ: Trường ĐH Sư phạm TP.HCM</p>
+    </div>
+
+    <div class="right">
+        <iframe src="https://www.google.com/maps?q=Đại học Sư phạm TP.HCM&output=embed">
+        </iframe>
+    </div>
+</div>

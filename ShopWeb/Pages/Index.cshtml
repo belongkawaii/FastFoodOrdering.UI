@@ -22,41 +22,25 @@
         </a>
     </div>
 
-    <div class="right">
-        <a href="#" class="btn-open">Đăng nhập</a>
-        <a asp-page="/Signup">Đăng ký</a>
-    </div>
+        <div class="right">
+            @{
+                var token = HttpContext.Request.Cookies["JWToken"];
+                var user = HttpContext.Request.Cookies["UserName"];
+            }
+
+            @if (!string.IsNullOrEmpty(token))
+            {
+                <span class="greeting">Xin chào, @user</span>
+                <a asp-page="/Logout">Đăng xuất</a>
+            }
+            else
+            {
+                <a asp-page="/Signin">Đăng nhập</a>
+                <a asp-page="/Signup">Đăng ký</a>
+            }
+        </div>
 </div>
 
-@* Login Page *@
-    <div class="login-page hidden" id="login-page">
-        <button class="btn-x" id="btn-x" onclick="closePageLogin()">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-        </button>
-        <form method="post" asp-page-handler="Login">
-            <div class="login-info">
-                <h1>Login</h1>
-                <p>Login to use our services.</p>
-            </div>
-            <div class="login-form">
-                <input placeholder="Email" type="email" id="email" name="email"/>
-                <input placeholder="Password" type="password" id="password" name="password" />
-                @if (TempData["ErrorMessageLogin"] != null)
-                {
-                    <p class="error">@TempData["ErrorMessageLogin"]</p>
-                }
-            </div>
-        
-            <div class="login-function">
-                <a href="#">Quên Mật Khẩu?</a>
-                <a href="#">Đăng Ký Tài Khoản</a>
-            </div>
-            <button class="btn-login" type="submit">Login</button>
-        </form>
-    </div>
-    <div class="overlay hidden"></div>
 
 <!-- 🔥 Main layout -->
 <div class="container">

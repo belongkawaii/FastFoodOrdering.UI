@@ -54,46 +54,6 @@ namespace ShopWeb.Pages   // 🔥 nhớ đúng namespace project của bạn
             }
         }
 
-        public async Task<IActionResult> OnPostLoginAsync(string email, string password)
-        {
-            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
-            {
-                TempData["ErrorMessageLogin"] = "Vui lòng nhập đầy đủ thông tin.";
-                return RedirectToPage();
-            }
-
-            var loginRequest = new { Email = email, Password = password };
-
-            try
-            {
-                // Gọi tới AuthController đã có của bạn
-                var response = await _httpClient.PostAsJsonAsync("https://localhost:7214/api/Auth/login", loginRequest);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    var result = await response.Content.ReadFromJsonAsync<LoginResponse>();
-                    if (result != null && !string.IsNullOrEmpty(result.Token))
-                    {
-                        // Lưu Token vào Cookie bảo mật
-                        Response.Cookies.Append("JWToken", result.Token, new CookieOptions
-                        {
-                            HttpOnly = true,
-                            Secure = true,
-                            Expires = DateTimeOffset.UtcNow.AddHours(3)
-                        });
-                        TempData["SuccessMsg"] = "Chào mừng bạn đã quay trở lại!";
-                        return RedirectToPage();
-                    }
-                }
-                TempData["ErrorMsg"] = "Đăng nhập thất bại. Kiểm tra lại email/mật khẩu.";
-            }
-            catch
-            {
-                TempData["ErrorMsg"] = "Lỗi kết nối server xác thực.";
-            }
-            return RedirectToPage();
-        }
-
         public async Task<IActionResult> OnPostAddItemAsync(int productId)
         {
             // Lấy token từ Cookie
@@ -213,8 +173,3 @@ namespace ShopWeb.Pages   // 🔥 nhớ đúng namespace project của bạn
     }
 }
 
-public class LoginResponse
-{
-    public string Token { get; set; } = "";
-    public string Message { get; set; } = "";
-}
