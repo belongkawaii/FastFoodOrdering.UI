@@ -21,7 +21,7 @@ namespace ShopWeb.Pages   // 🔥 nhớ đúng namespace project của bạn
         /*hàm gọi API lấy dữ liệu sản phẩm*/
         public async Task OnGet() 
         {
-            var response = await _httpClient.GetFromJsonAsync<List<Product>>("https://localhost:7214/api/products");
+            var response = await _httpClient.GetFromJsonAsync<List<Product>>("http://localhost:5014/api/products");
             Products = response?.Select(p =>
             {
                 p.imageUrl = p.imageUrl.Replace("http://", "https://");
@@ -38,7 +38,7 @@ namespace ShopWeb.Pages   // 🔥 nhớ đúng namespace project của bạn
                         new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
                     // Gọi API lấy giỏ hàng
-                    var cartResponse = await _httpClient.GetAsync("https://localhost:7214/api/cart");
+                    var cartResponse = await _httpClient.GetAsync("http://localhost:5014/api/cart");
 
                     if (cartResponse.IsSuccessStatusCode)
                     {
@@ -53,6 +53,8 @@ namespace ShopWeb.Pages   // 🔥 nhớ đúng namespace project của bạn
                 }
             }
         }
+
+        
 
         public async Task<IActionResult> OnPostAddItemAsync(int productId)
         {
@@ -73,7 +75,7 @@ namespace ShopWeb.Pages   // 🔥 nhớ đúng namespace project của bạn
                 _httpClient.DefaultRequestHeaders.Authorization =
                     new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
-                var response = await _httpClient.PostAsJsonAsync("https://localhost:7214/api/cart/item", addToCartDto);
+                var response = await _httpClient.PostAsJsonAsync("http://localhost:5014/api/cart/item", addToCartDto);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -109,7 +111,7 @@ namespace ShopWeb.Pages   // 🔥 nhớ đúng namespace project của bạn
                     new AuthenticationHeaderValue("Bearer", token);
 
                 // 3. Gọi API lấy giỏ hàng
-                var response = await _httpClient.GetAsync("https://localhost:7214/api/cart");
+                var response = await _httpClient.GetAsync("http://localhost:5014/api/cart");
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -121,7 +123,7 @@ namespace ShopWeb.Pages   // 🔥 nhớ đúng namespace project của bạn
                     {
                         if (item.product != null && !item.product.imageUrl.StartsWith("http"))
                         {
-                            item.product.imageUrl = "https://localhost:7214" + item.product.imageUrl;
+                            item.product.imageUrl = "http://localhost:5014" + item.product.imageUrl;
                         }
                     }
                 }
