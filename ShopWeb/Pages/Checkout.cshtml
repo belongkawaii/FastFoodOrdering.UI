@@ -1,0 +1,90 @@
+@page
+@model ShopWeb.Pages.CheckoutModel
+@{
+    ViewData["Title"] = "Đặt hàng";
+}
+
+<link rel="stylesheet" href="~/css/cart.css" />
+
+<div class="cart-container">
+    <h2>🧾 Xác nhận đặt hàng</h2>
+
+    <!-- 🔥 FORM -->
+    <form method="post">
+
+        <div class="form-group">
+            <label>Họ tên</label>
+            <input asp-for="FullName" required />
+        </div>
+
+        <div class="form-group">
+            <label>Số điện thoại</label>
+            <input asp-for="Phone" required />
+        </div>
+
+        <div class="form-group">
+            <label>Địa chỉ</label>
+            <input asp-for="Address" required />
+        </div>
+
+        <div class="form-group">
+            <label>Ghi chú</label>
+            <textarea asp-for="Note"></textarea>
+        </div>
+
+        <!-- 🔥 DANH SÁCH SẢN PHẨM -->
+        <h3>🛒 Sản phẩm</h3>
+
+        @if (Model.Carts.items == null || !Model.Carts.items.Any())
+        {
+            <p>Giỏ hàng trống</p>
+        }
+        else
+        {
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>Ảnh</th>
+                        <th>Tên</th>
+                        <th>SL</th>
+                        <th>Giá</th>
+                        <th>Thành tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Carts.items)
+                    {
+                        string imageUrl = "https://localhost:7214" + item.product.imageUrl;
+                        var total = item.product.price * item.quantity;
+
+                        <tr>
+                            <td><img class="cart-img" src="@imageUrl" /></td>
+                            <td>@item.product.name</td>
+                            <td>@item.quantity</td>
+                            <td>@item.product.price.ToString("N0") đ</td>
+                            <td>@total.ToString("N0") đ</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="cart-summary">
+                <h4>Tổng SL: @Model.Carts.TotalQuantity</h4>
+                <h3>Tổng tiền: @Model.Carts.TotalAmount.ToString("N0") đ</h3>
+
+                <button type="submit" class="checkout-btn">
+                    🛍️ Xác nhận đặt hàng
+                </button>
+                 else
+    {
+        <p>Giỏ hàng trống</p>
+    }
+            </div>
+        }
+    </form>
+
+    @if (!string.IsNullOrEmpty(Model.Message))
+    {
+        <p style="color:green">@Model.Message</p>
+    }
+</div>
