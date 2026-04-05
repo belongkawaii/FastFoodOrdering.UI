@@ -82,3 +82,33 @@
         </iframe>
     </div>
 </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    // Lấy dữ liệu từ TempData thông qua Razor
+    var successMsg = "@Html.Raw(TempData["SuccessMsg"])";
+    var errorMsg = "@Html.Raw(TempData["ErrorMsg"])";
+
+    if (successMsg) {
+    Swal.fire({
+    icon: 'success',
+    title: 'Thành công!',
+    text: successMsg,
+    timer: 2000,
+    showConfirmButton: false
+    });
+    }
+
+    if (errorMsg) {
+    Swal.fire({
+    icon: 'error',
+    title: 'Rất tiếc...',
+    text: errorMsg,
+    confirmButtonColor: '#d33'
+    });
+    }
+    });
+</script>
