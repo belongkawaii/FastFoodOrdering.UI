@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
+using System.Net.Http.Json;
 
 namespace ShopWeb.Pages
 {
@@ -11,66 +12,91 @@ namespace ShopWeb.Pages
     {
         private readonly HttpClient _httpClient;
 
-        public List<Product> Products { get; set; } = new();
         public Cart Carts { get; set; } = new();
-        public CartModel()
+
+        public CartModel(IHttpClientFactory factory)
         {
-            _httpClient = new HttpClient();
+            _httpClient = factory.CreateClient();
         }
-        public async Task OnGetAsync()
+
+        private void AttachToken()
         {
-            var token = Request.Cookies["JWToken"];
+            var token = Request.Cookies["AuthToken"];
             if (!string.IsNullOrEmpty(token))
             {
-                try
-                {
-                    // Gắn token vào header để API xác thực được bạn là ai
-                    _httpClient.DefaultRequestHeaders.Authorization =
-                        new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-
-                    // Gọi API lấy giỏ hàng
-                    var cartResponse = await _httpClient.GetAsync("https://localhost:7214/api/cart");
-
-                    if (cartResponse.IsSuccessStatusCode)
-                    {
-                        // Đổ dữ liệu vào biến UserCart đã khai báo ở ngoài
-                        Carts = await cartResponse.Content.ReadFromJsonAsync<Cart>() ?? new Cart();
-                    }
-                }
-                catch
-                {
-                    // Nếu lỗi API giỏ hàng, khởi tạo giỏ trống để không lỗi trang
-                    Carts = new Cart();
-                }
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             }
         }
+
+        // Hàm lấy giỏ hàng lúc mới vào trang
+        public async Task OnGetAsync()
+        {
+            AttachToken();
+            try
+            {
+                var response = await _httpClient.GetAsync("http://localhost:5014/api/cart");
+                if (response.IsSuccessStatusCode)
+                {
+                    Carts = await response.Content.ReadFromJsonAsync<Cart>() ?? new Cart();
+                }
+            }
+            catch { Carts = new Cart(); }
+        }
+
+        // 🔥 HÀM XỬ LÝ AJAX TĂNG SỐ LƯỢNG
+        public async Task<JsonResult> OnPostIncreaseAsync(int itemId, int productId)
+        {
+            AttachToken();
+            var res = await _httpClient.PutAsync($"http://localhost:5014/api/cart/increase/{itemId}", null);
+            return await GetUpdatedCartData(itemId, res.IsSuccessStatusCode);
+        }
+
+        // 🔥 HÀM XỬ LÝ AJAX GIẢM SỐ LƯỢNG
+        public async Task<JsonResult> OnPostDecreaseAsync(int itemId, int productId)
+        {
+            AttachToken();
+            var res = await _httpClient.PutAsync($"http://localhost:5014/api/cart/decrease/{itemId}", null);
+            return await GetUpdatedCartData(itemId, res.IsSuccessStatusCode);
+        }
+
+        // 🔥 HÀM XỬ LÝ AJAX XÓA MÓN ĂN
+        public async Task<JsonResult> OnPostRemoveAsync(int itemId, int productId)
+        {
+            AttachToken();
+            var res = await _httpClient.DeleteAsync($"http://localhost:5014/api/cart/remove/{itemId}");
+            return await GetUpdatedCartData(itemId, res.IsSuccessStatusCode);
+        }
+
+        // 🛠 HÀM HỖ TRỢ: Lấy giỏ hàng từ DB ra để tính toán số liệu chuẩn 100%
+        private async Task<JsonResult> GetUpdatedCartData(int itemId, bool isSuccess)
+        {
+            if (!isSuccess) return new JsonResult(new { success = false, message = "Lỗi khi cập nhật!" });
+
+            // Gọi API lấy lại toàn bộ giỏ hàng mới nhất
+            var cartResponse = await _httpClient.GetAsync("http://localhost:5014/api/cart");
+            if (cartResponse.IsSuccessStatusCode)
+            {
+                var cart = await cartResponse.Content.ReadFromJsonAsync<Cart>();
+                if (cart == null || cart.items == null || !cart.items.Any()) 
+                {
+                    // Giỏ hàng trống
+                    return new JsonResult(new { success = true, cartTotalQty = 0, cartTotalAmount = "0" });
+                }
+
+                // Tìm món ăn vừa được cập nhật để trả về số lượng và tổng tiền của riêng nó
+                var updatedItem = cart.items.FirstOrDefault(i => i.id == itemId);
+                
+                return new JsonResult(new
+                {
+                    success = true,
+                    newQuantity = updatedItem?.quantity ?? 0,
+                    itemTotal = ((updatedItem?.quantity ?? 0) * (updatedItem?.product?.price ?? 0)).ToString("N0"),
+                    cartTotalQty = cart.TotalQuantity,
+                    cartTotalAmount = cart.TotalAmount.ToString("N0")
+                });
+            }
+            
+            return new JsonResult(new { success = false, message = "Không tải được dữ liệu mới." });
+        }
     }
-}
-
-public class Product
-{
-    public int id { get; set; }
-    public string name { get; set; } = "";
-    public decimal price { get; set; }
-    public string imageUrl { get; set; } = "";
-}
-
-public class CartItem
-{
-    public int id { get; set; }
-    public int productId { get; set; }
-    public int quantity { get; set; }
-    public int cartId { get; set; }
-    public Product product { get; set; }
-}
-
-public class Cart
-{
-    public int id { get; set; }
-    public int userId { get; set; }
-    public List<CartItem> items { get; set; } = new();
-
-    // Tính tổng tiền: Dùng thuộc tính này để hiển thị trên giao diện
-    public decimal TotalAmount => items?.Sum(i => i.quantity * i.product.price) ?? 0;
-    public int TotalQuantity => items?.Sum(i => i.quantity) ?? 0;
 }

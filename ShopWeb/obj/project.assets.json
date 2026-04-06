@@ -4748,23 +4748,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\LONG\\.nuget\\packages\\": {},
+    "C:\\Users\\Windows\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\HOCTAP\\HocTapReal\\Nam2-2025\\HK2\\Agile\\FastFoodOrdering\\FastFoodOrdering.UI\\ShopWeb\\ShopWeb.csproj",
+      "projectUniqueName": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\ShopWeb.csproj",
       "projectName": "ShopWeb",
-      "projectPath": "D:\\HOCTAP\\HocTapReal\\Nam2-2025\\HK2\\Agile\\FastFoodOrdering\\FastFoodOrdering.UI\\ShopWeb\\ShopWeb.csproj",
-      "packagesPath": "C:\\Users\\LONG\\.nuget\\packages\\",
-      "outputPath": "D:\\HOCTAP\\HocTapReal\\Nam2-2025\\HK2\\Agile\\FastFoodOrdering\\FastFoodOrdering.UI\\ShopWeb\\obj\\",
+      "projectPath": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\ShopWeb.csproj",
+      "packagesPath": "C:\\Users\\Windows\\.nuget\\packages\\",
+      "outputPath": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\LONG\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Windows\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4773,10 +4773,12 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net9.0": {
+          "framework": "net9.0",
           "targetAlias": "net9.0",
           "projectReferences": {}
         }
@@ -4791,10 +4793,11 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.300"
+      "SdkAnalysisLevel": "10.0.200"
     },
     "frameworks": {
       "net9.0": {
+        "framework": "net9.0",
         "targetAlias": "net9.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Design": {
@@ -4841,7 +4844,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.312/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

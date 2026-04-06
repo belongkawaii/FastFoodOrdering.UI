@@ -6,32 +6,43 @@
 
 <link rel="stylesheet" href="~/css/cart.css" />
 
+@Html.AntiForgeryToken()
+
 <div class="banner">
     <img id="banner-img" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200">
 </div>
 
-<!-- 🔥 Navbar -->
 <div class="navbar">
     <div class="left">
         <a asp-page="/Index">Trang chủ</a>
         <a href="#">Giới thiệu</a>
         <a href="#">Món ăn đề xuất</a>
         <a asp-page="/Cart" class="cart">
-            🛒 Giỏ hàng <span id="cart-count">@Model.Carts.TotalQuantity</span>
+            🛒 Giỏ hàng <span id="cart-count">@Model.Carts?.TotalQuantity</span>
         </a>
     </div>
-
     <div class="right">
-        <a asp-page="/Signin">Đăng nhập</a>
-        <a asp-page="/Signup">Đăng ký</a>
+        @{
+            var token = HttpContext.Request.Cookies["AuthToken"];
+            var user = HttpContext.Request.Cookies["UserName"];
+        }
+        @if (!string.IsNullOrEmpty(token))
+        {
+            <span class="greeting">Xin chào, @user</span>
+            <a asp-page="/Logout">Đăng xuất</a>
+        }
+        else
+        {
+            <a asp-page="/Signin">Đăng nhập</a>
+            <a asp-page="/Signup">Đăng ký</a>
+        }
     </div>
 </div>
-
 
 <div class="cart-container">
     <h2>🛒 Giỏ hàng của bạn</h2>
 
-    @if (Model.Carts.items == null || !Model.Carts.items.Any())
+    @if (Model.Carts?.items == null || !Model.Carts.items.Any())
     {
         <div class="empty-cart">Giỏ hàng trống</div>
     }
@@ -51,75 +62,97 @@
             <tbody>
                 @foreach (var item in Model.Carts.items)
                 {
-                    string imageUrl = "https://localhost:7214" + item.product.imageUrl;
+                    string imageUrl = "http://localhost:5014" + item.product.imageUrl;
+                    var total = item.product.price * item.quantity;
 
-                    <tr>
-                        <td>
-                            <img class="cart-img" src="@imageUrl" />
-                        </td>
+                    <tr id="row-@item.id">
+                        <td><img class="cart-img" src="@imageUrl" /></td>
                         <td>@item.product.name</td>
+                        <td class="price">@item.product.price.ToString("N0") đ</td>
 
-                        <td class="price">
-                            @item.product.price đ
-                        </td>
-
-                        <!-- 🔥 Quantity -->
                         <td>
                             <div class="quantity-box">
-                                <form method="post" asp-page-handler="Decrease">
-                                    <input type="hidden" name="itemId" value="@item.id" />
-                                    <button class="quantity-btn">-</button>
-                                </form>
-
-                                <span>@item.quantity</span>
-
-                                <form method="post" asp-page-handler="Increase">
-                                    <input type="hidden" name="itemId" value="@item.id" />
-                                    <button class="quantity-btn">+</button>
-                                </form>
+                                <button type="button" class="quantity-btn" onclick="updateItem('Decrease', @item.id, @item.productId)">-</button>
+                                <span id="qty-@item.id">@item.quantity</span>
+                                <button type="button" class="quantity-btn" onclick="updateItem('Increase', @item.id, @item.productId)">+</button>
                             </div>
                         </td>
 
-                        <!-- 🔥 Total -->
-                        @{
-                            var total = item.product.price * item.quantity;
-                        }
-                        <td class="price">
-                            @total.ToString("C0", new System.Globalization.CultureInfo("vi-VN"))
+                        <td class="price" id="item-total-@item.id">
+                            @total.ToString("N0") đ
                         </td>
 
-                        <!-- 🔥 Remove -->
                         <td>
-                            <form method="post" asp-page-handler="Remove">
-                                <input type="hidden" name="itemId" value="@item.id" />
-                                <button class="remove-btn">Xóa</button>
-                            </form>
+                            <button type="button" class="remove-btn" onclick="updateItem('Remove', @item.id, @item.productId)">Xóa</button>
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
 
-        <!-- 🔥 Summary -->
         <div class="cart-summary">
-            <h4>Tổng SL: @Model.Carts.TotalQuantity</h4>
-            <h3>Tổng tiền: @Model.Carts.TotalAmount.ToString("N0") đ</h3>
+            <h4 id="cart-total-qty">Tổng SL: @Model.Carts.TotalQuantity</h4>
+            <h3 id="cart-total-amount">Tổng tiền: @Model.Carts.TotalAmount.ToString("N0") đ</h3>
             <a asp-page="/Checkout" class="checkout-btn">Thanh toán</a>
-
         </div>
     }
 </div>
 
-<!-- 🔥 Footer -->
 <div class="footer">
     <div class="left">
         <h3>Đom Đóm nhỏ HCMUE</h3>
         <p>SĐT: 0999999999</p>
         <p>Địa chỉ: Trường ĐH Sư phạm TP.HCM</p>
     </div>
-
     <div class="right">
-        <iframe src="https://www.google.com/maps?q=Đại học Sư phạm TP.HCM&output=embed">
-        </iframe>
+        <iframe src="https://www.google.com/maps?q=Đại học Sư phạm TP.HCM&output=embed"></iframe>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    // 🔥 Tuyệt chiêu AJAX giúp web không bị F5
+    function updateItem(action, itemId, productId) {
+        // Lấy mã bảo vệ AntiForgeryToken để C# cho phép chạy
+        const csrfToken = document.querySelector('input[name="__RequestVerificationToken"]').value;
+
+        // Bắn tín hiệu ngầm xuống Backend
+        fetch(`/Cart?handler=${action}&itemId=${itemId}&productId=${productId}`, {
+            method: 'POST',
+            headers: {
+                'RequestVerificationToken': csrfToken
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                if (action === 'Remove' || data.newQuantity === 0) {
+                    // Nếu xóa, làm hiệu ứng mờ dòng rồi xóa khỏi bảng
+                    const row = document.getElementById(`row-${itemId}`);
+                    row.style.opacity = '0';
+                    setTimeout(() => row.remove(), 300);
+                } else {
+                    // Cập nhật số lượng và thành tiền của món đó
+                    document.getElementById(`qty-${itemId}`).innerText = data.newQuantity;
+                    document.getElementById(`item-total-${itemId}`).innerText = data.itemTotal + ' đ';
+                }
+
+                // Cập nhật thông tin tổng giỏ hàng & Navbar
+                document.getElementById('cart-total-qty').innerText = `Tổng SL: ${data.cartTotalQty}`;
+                document.getElementById('cart-total-amount').innerText = `Tổng tiền: ${data.cartTotalAmount} đ`;
+                document.getElementById('cart-count').innerText = data.cartTotalQty; 
+
+                // Nếu xóa sạch giỏ hàng thì load lại trang để hiện chữ "Giỏ hàng trống"
+                if (data.cartTotalQty === 0) {
+                    location.reload();
+                }
+            } else {
+                Swal.fire('Thất bại', data.message, 'error');
+            }
+        })
+        .catch(error => {
+            console.error('Lỗi AJAX:', error);
+            Swal.fire('Lỗi', 'Không kết nối được với hệ thống.', 'error');
+        });
+    }
+</script>

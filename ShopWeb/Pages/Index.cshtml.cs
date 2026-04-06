@@ -28,7 +28,7 @@ namespace ShopWeb.Pages   // 🔥 nhớ đúng namespace project của bạn
                 return p;
             }).ToList() ?? new List<Product>();
 
-            var token = Request.Cookies["JWToken"];
+            var token = Request.Cookies["AuthToken"];
             if (!string.IsNullOrEmpty(token))
             {
                 try
@@ -59,7 +59,7 @@ namespace ShopWeb.Pages   // 🔥 nhớ đúng namespace project của bạn
         public async Task<IActionResult> OnPostAddItemAsync(int productId)
         {
             // Lấy token từ Cookie
-            var token = Request.Cookies["JWToken"];
+            var token = Request.Cookies["AuthToken"];
             if (string.IsNullOrEmpty(token))
             {
                 TempData["ErrorMsg"] = "Vui lòng đăng nhập để đặt hàng!";
@@ -98,7 +98,7 @@ namespace ShopWeb.Pages   // 🔥 nhớ đúng namespace project của bạn
         public async Task<IActionResult> OnGetCartAsync()
         {
             // 1. Lấy Token từ Cookie
-            var token = Request.Cookies["JWToken"];
+            var token = Request.Cookies["AuthToken"];
             if (string.IsNullOrEmpty(token))
             {
                 return RedirectToPage("/Index"); // Chưa login thì về trang chủ

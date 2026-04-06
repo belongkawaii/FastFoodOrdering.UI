@@ -4,33 +4,32 @@
     ViewData["Title"] = "Đăng Nhập";
 }
 
+<link rel="stylesheet" href="~/css/signup.css" />
 
-<link rel="stylesheet" href="~/css/signin.css" />
-
-<div class="banner">
-    <img id="banner-img" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200">
+<div class="top-banner">
+    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200">
 </div>
 
-<!-- 🔥 Navbar -->
 <div class="navbar">
     <div class="left">
         <a asp-page="/Index">Trang chủ</a>
         <a href="#">Giới thiệu</a>
         <a href="#">Món ăn đề xuất</a>
         <a asp-page="/Cart" class="cart">
-            🛒 Giỏ hàng <span id="cart-count">@Model.Carts.TotalQuantity</span>
+            🛒 Giỏ hàng <span id="cart-count">@Model.Carts?.TotalQuantity</span>
         </a>
     </div>
 
     <div class="right">
         @{
-            var token = HttpContext.Request.Cookies["JWToken"];
+            // LƯU Ý: Chỗ này tôi đổi thành AuthToken cho khớp với code Checkout hôm trước
+            var token = HttpContext.Request.Cookies["AuthToken"];
             var user = HttpContext.Request.Cookies["UserName"];
         }
 
         @if (!string.IsNullOrEmpty(token))
         {
-            <span class="greeting">Xin chào, @user</span>
+            <span class="greeting" style="margin-right: 15px; font-weight: bold; color: #ee4d2d;">Xin chào, @user</span>
             <a asp-page="/Logout">Đăng xuất</a>
         }
         else
@@ -41,35 +40,43 @@
     </div>
 </div>
 
+<div class="signup-container">
+    <div class="signup-left">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800">
+    </div>
 
-<div class="signin-container">
-    <form method="post" asp-page-handler="Login" class="signin-form">
-        
-        <h1>Đăng nhập</h1>
+    <div class="signup-right">
+        <div class="form-outer">
+            <div class="form-inner">
+                <h2>Đăng nhập</h2>
 
-        <input asp-for="Email" placeholder="Email" />
-        <span asp-validation-for="Email" class="error"></span>
+                <form method="post" asp-page-handler="Login" id="form-login">
+                    
+                    <input asp-for="Email" placeholder="Email" required />
+                    <span asp-validation-for="Email" class="error hidden"></span>
 
-        <input asp-for="Password" type="password" placeholder="Mật khẩu" />
-        <span asp-validation-for="Password" class="error"></span>
+                    <input asp-for="Password" type="password" placeholder="Mật khẩu" required />
+                    <span asp-validation-for="Password" class="error hidden"></span>
 
-        @if (TempData["ErrorMessageLogin"] != null)
-        {
-            <p class="error">@TempData["ErrorMessageLogin"]</p>
-        }
+                    @if (TempData["ErrorMessageLogin"] != null)
+                    {
+                        <p class="error" style="display: block; margin-top: 10px; color: red;">
+                            @TempData["ErrorMessageLogin"]
+                        </p>
+                    }
 
-        <button type="submit">Đăng nhập</button>
+                    <button type="submit" style="margin-top: 15px;">Đăng nhập</button>
 
-        <div class="extra">
-            <a href="#">Quên mật khẩu?</a>
-            <a asp-page="/Signup">Đăng ký</a>
+                    <div class="extra">
+                        <a href="/ForgotPassword">Quên mật khẩu?</a>
+                        <a asp-page="/Signup">Tạo tài khoản mới</a>
+                    </div>
+                </form>
+            </div>
         </div>
-
-    </form>
+    </div>
 </div>
 
-
-<!-- 🔥 Footer -->
 <div class="footer">
     <div class="left">
         <h3>Đom Đóm nhỏ HCMUE</h3>
@@ -78,37 +85,21 @@
     </div>
 
     <div class="right">
-        <iframe src="https://www.google.com/maps?q=Đại học Sư phạm TP.HCM&output=embed">
-        </iframe>
+        <iframe src="https://www.google.com/maps?q=Đại học Sư phạm TP.HCM&output=embed"></iframe>
     </div>
 </div>
 
-
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-    // Lấy dữ liệu từ TempData thông qua Razor
     var successMsg = "@Html.Raw(TempData["SuccessMsg"])";
     var errorMsg = "@Html.Raw(TempData["ErrorMsg"])";
 
     if (successMsg) {
-    Swal.fire({
-    icon: 'success',
-    title: 'Thành công!',
-    text: successMsg,
-    timer: 2000,
-    showConfirmButton: false
-    });
+    Swal.fire({ icon: 'success', title: 'Thành công!', text: successMsg, timer: 2000, showConfirmButton: false });
     }
-
     if (errorMsg) {
-    Swal.fire({
-    icon: 'error',
-    title: 'Rất tiếc...',
-    text: errorMsg,
-    confirmButtonColor: '#d33'
-    });
+    Swal.fire({ icon: 'error', title: 'Rất tiếc...', text: errorMsg, confirmButtonColor: '#d33' });
     }
     });
 </script>

@@ -9,15 +9,25 @@
 <div class="checkout-container">
     <h2>📦 Thông tin đặt hàng</h2>
 
-    @if (Model.Cart == null || Model.Cart.items == null || !Model.Cart.items.Any())
+    @if (!string.IsNullOrEmpty(Model.SuccessMessage))
     {
-        <div class="empty-cart">❌ Giỏ hàng trống - không thể đặt hàng</div>
+        <div class="success" style="padding: 40px; text-align: center;">
+            <h3 style="color: #52c41a; font-size: 24px;">@Model.SuccessMessage</h3>
+            <p>Cảm ơn bạn đã mua sắm tại Đom Đóm nhỏ!</p>
+            <br />
+            <a href="/Index" class="order-btn" style="text-decoration: none; padding: 10px 20px; display: inline-block; width: auto;">Quay lại Trang chủ</a>
+        </div>
+    }
+    else if (Model.Cart == null || Model.Cart.Items == null || !Model.Cart.Items.Any())
+    {
+        <div class="empty-cart">❌ Giỏ hàng của bạn đang trống. Không thể đặt hàng!</div>
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="/Index" style="color: #ee4d2d; font-weight: bold; text-decoration: none;">&larr; Quay lại chọn món</a>
+        </div>
     }
     else
     {
         <form method="post">
-
-            <!-- 🔥 THÔNG TIN NGƯỜI NHẬN -->
             <div class="form-group">
                 <label>Họ và tên</label>
                 <input asp-for="Order.FullName" required />
@@ -38,7 +48,6 @@
                 <textarea asp-for="Order.Note"></textarea>
             </div>
 
-            <!-- 🔥 DANH SÁCH SẢN PHẨM -->
             <h3>🛒 Sản phẩm</h3>
 
             <table class="cart-table">
@@ -51,31 +60,24 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.Cart.items)
+                    @foreach (var item in Model.Cart.Items)
                     {
-                        var total = item.product.price * item.quantity;
+                        var total = item.Product.Price * item.Quantity;
                         <tr>
-                            <td>@item.product.name</td>
-                            <td>@item.quantity</td>
-                            <td>@item.product.price</td>
-                            <td>@total</td>
+                            <td>@item.Product.Name</td>
+                            <td>@item.Quantity</td>
+                            <td>@item.Product.Price.ToString("N0")</td>
+                            <td>@total.ToString("N0")</td>
                         </tr>
                     }
                 </tbody>
             </table>
 
-            <!-- 🔥 TỔNG TIỀN -->
             <h3>💰 Tổng tiền: @Model.Cart.TotalAmount.ToString("N0") đ</h3>
 
-            <!-- 🔥 VALIDATION -->
             @if (!string.IsNullOrEmpty(Model.ErrorMessage))
             {
                 <div class="error">@Model.ErrorMessage</div>
-            }
-
-            @if (!string.IsNullOrEmpty(Model.SuccessMessage))
-            {
-                <div class="success">@Model.SuccessMessage</div>
             }
 
             <button type="submit" class="order-btn">Xác nhận đặt hàng</button>

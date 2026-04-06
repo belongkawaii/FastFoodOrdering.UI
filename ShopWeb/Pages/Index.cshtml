@@ -24,7 +24,7 @@
 
         <div class="right">
             @{
-                var token = HttpContext.Request.Cookies["JWToken"];
+                var token = HttpContext.Request.Cookies["AuthToken"];
                 var user = HttpContext.Request.Cookies["UserName"];
             }
 
@@ -58,7 +58,7 @@
     <div class="products">
     @foreach (var p in Model.Products)
     {
-         string imageUrl = "https://localhost:5014" + p.imageUrl;
+         string imageUrl = "http://localhost:5014" + p.imageUrl;
         <div class="product">
             <img src="@imageUrl">
             <h4 class="product-name">
