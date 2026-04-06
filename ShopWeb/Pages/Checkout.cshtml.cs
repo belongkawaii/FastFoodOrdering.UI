@@ -1,90 +1,90 @@
-
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Net.Http.Headers;
+using System.Text;
+using System.Text.Json;
 
-public class CheckoutModel : PageModel
+namespace ShopWeb.Pages
 {
-    private readonly HttpClient _httpClient = new HttpClient();
-
-    public Cart Cart { get; set; } = new();
-
-    [BindProperty]
-    public OrderRequest Order { get; set; } = new();
-
-    public string Message { get; set; }
-
-    public async Task OnGetAsync()
+    public class CheckoutModel : PageModel
     {
-        var token = Request.Cookies["JWToken"];
+        private readonly HttpClient _httpClient;
 
-        if (!string.IsNullOrEmpty(token))
+        public CheckoutModel(IHttpClientFactory factory)
         {
-            _httpClient.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Bearer", token);
+            _httpClient = factory.CreateClient();
+        }
 
-            var res = await _httpClient.GetAsync("https://localhost:7214/api/cart");
+        public CartDTO Cart { get; set; }
 
-            if (res.IsSuccessStatusCode)
+        [BindProperty]
+        public OrderRequestDTO Order { get; set; }
+
+        public string ErrorMessage { get; set; }
+        public string SuccessMessage { get; set; }
+
+        // 🔥 LOAD GIỎ HÀNG
+        public async Task OnGetAsync()
+        {
+            var response = await _httpClient.GetAsync("https://localhost:7214/api/cart");
+
+            if (response.IsSuccessStatusCode)
             {
-                Cart = await res.Content.ReadFromJsonAsync<Cart>() ?? new Cart();
+                var json = await response.Content.ReadAsStringAsync();
+                Cart = JsonSerializer.Deserialize<CartDTO>(json, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
             }
         }
-    }
 
-    public async Task<IActionResult> OnPostAsync()
-    {
-        var token = Request.Cookies["JWToken"];
-
-        if (Cart.items == null || !Cart.items.Any())
+        // 🔥 ĐẶT HÀNG
+        public async Task<IActionResult> OnPostAsync()
         {
-            Message = "Giỏ hàng trống!";
+            // AC2: VALIDATE
+            if (string.IsNullOrEmpty(Order.FullName) ||
+                string.IsNullOrEmpty(Order.Phone) ||
+                string.IsNullOrEmpty(Order.Address))
+            {
+                ErrorMessage = "❌ Vui lòng nhập đầy đủ thông tin";
+                await OnGetAsync();
+                return Page();
+            }
+
+            // check giỏ hàng
+            var cartResponse = await _httpClient.GetAsync("https://localhost:7214/api/cart");
+            var jsonCart = await cartResponse.Content.ReadAsStringAsync();
+
+            Cart = JsonSerializer.Deserialize<CartDTO>(jsonCart, new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            });
+
+            if (Cart == null || Cart.items == null || !Cart.items.Any())
+            {
+                ErrorMessage = "❌ Giỏ hàng trống";
+                return Page();
+            }
+
+            // 🔥 GỌI API TẠO ORDER
+            var content = new StringContent(JsonSerializer.Serialize(Order), Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.PostAsync("https://localhost:7214/api/order", content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                SuccessMessage = "✅ Đặt hàng thành công!";
+
+                // 🔥 XÓA GIỎ HÀNG
+                await _httpClient.DeleteAsync("https://localhost:7214/api/cart/clear");
+
+                Cart = null;
+            }
+            else
+            {
+                ErrorMessage = "❌ Đặt hàng thất bại";
+            }
+
             return Page();
         }
-
-        Order.Items = Cart.items.Select(i => new OrderItem
-        {
-            ProductId = i.productId,
-            Quantity = i.quantity
-        }).ToList();
-
-        _httpClient.DefaultRequestHeaders.Authorization =
-            new AuthenticationHeaderValue("Bearer", token);
-
-        var res = await _httpClient.PostAsJsonAsync(
-            "https://localhost:7214/api/orders",
-            Order
-        );
-
-        if (res.IsSuccessStatusCode)
-{
-    Message = "✅ Đặt hàng thành công!";
-
-    //API XÓA GIỎ HÀNG
-    await client.DeleteAsync("https://localhost:7214/api/cart");
-
-    //reload lại giỏ hàng
-    Carts.items = new List<CartItemDto>();
-    Carts.TotalQuantity = 0;
-    Carts.TotalAmount = 0;
-}
-
-        Message = "Đặt hàng thất bại!";
-        return Page();
     }
-}
-public class OrderRequest
-{
-    public string FullName { get; set; }
-    public string Phone { get; set; }
-    public string Address { get; set; }
-    public string Note { get; set; }
-    public List<OrderItem> Items { get; set; } = new();
-}
-
-public class OrderItem
-{
-    public int ProductId { get; set; }
-    public int Quantity { get; set; }
 }
