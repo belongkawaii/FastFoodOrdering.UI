@@ -1,0 +1,85 @@
+@page "{id?}"
+@model ProductDetailModel
+@{
+    ViewData["Title"] = "Chi tiết sản phẩm";
+}
+
+<link rel="stylesheet" href="~/css/product-detail.css" />
+
+<div class="container">
+    <div class="product-box">
+
+        <!-- LEFT: IMAGE -->
+        <div class="left">
+            <img id="productImage" src="@Model.Product.imageUrl" />
+
+            <input type="file" id="imageInput" hidden />
+            <button onclick="document.getElementById('imageInput').click()">
+                Chọn ảnh
+            </button>
+        </div>
+
+        <!-- RIGHT: INFO -->
+        <div class="right">
+
+            <!-- ID dropdown -->
+            <label>ID:</label>
+            <select id="productId" onchange="changeProduct()">
+                @foreach (var p in Model.AllProducts)
+                {
+                    <option value="@p.id" selected="@(p.id == Model.Product.id)">
+                        @p.id
+                    </option>
+                }
+            </select>
+
+            <label>Tên món:</label>
+            <input id="name" value="@Model.Product.name" />
+
+            <label>Giá:</label>
+            <input id="price" type="number" value="@Model.Product.price" />
+
+            <button class="save-btn" onclick="saveProduct()">Lưu thay đổi</button>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // đổi món khi chọn ID
+    function changeProduct() {
+        const id = document.getElementById("productId").value;
+        window.location.href = "/ProductDetail/" + id;
+    }
+
+    // preview ảnh
+    document.getElementById("imageInput").addEventListener("change", function (e) {
+        const file = e.target.files[0];
+        if (file) {
+            document.getElementById("productImage").src = URL.createObjectURL(file);
+        }
+    });
+
+    // save API
+    async function saveProduct() {
+        const data = {
+            id: document.getElementById("productId").value,
+            name: document.getElementById("name").value,
+            price: parseFloat(document.getElementById("price").value),
+            description: document.getElementById("description").value,
+            imageUrl: document.getElementById("productImage").src
+        };
+
+        const res = await fetch("/api/products/" + data.id, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+
+        if (res.ok) {
+            alert("Lưu thành công!");
+        } else {
+            alert("Lỗi!");
+        }
+    }
+</script>

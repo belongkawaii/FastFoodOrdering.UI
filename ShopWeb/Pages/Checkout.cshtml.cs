@@ -14,13 +14,14 @@ namespace ShopWeb.Pages
             _httpClient = factory.CreateClient();
         }
 
-        public CartDTO Cart { get; set; }
+        // ✅ Fix warning null
+        public CartDTO? Cart { get; set; }
 
         [BindProperty]
-        public OrderRequestDTO Order { get; set; }
+        public OrderRequestDTO Order { get; set; } = new();
 
-        public string ErrorMessage { get; set; }
-        public string SuccessMessage { get; set; }
+        public string ErrorMessage { get; set; } = "";
+        public string SuccessMessage { get; set; } = "";
 
         // 🔥 LOAD GIỎ HÀNG
         public async Task OnGetAsync()
@@ -40,7 +41,7 @@ namespace ShopWeb.Pages
         // 🔥 ĐẶT HÀNG
         public async Task<IActionResult> OnPostAsync()
         {
-            // AC2: VALIDATE
+            // ✅ VALIDATE
             if (string.IsNullOrEmpty(Order.FullName) ||
                 string.IsNullOrEmpty(Order.Phone) ||
                 string.IsNullOrEmpty(Order.Address))
@@ -50,7 +51,7 @@ namespace ShopWeb.Pages
                 return Page();
             }
 
-            // check giỏ hàng
+            // 🔥 LOAD GIỎ HÀNG
             var cartResponse = await _httpClient.GetAsync("https://localhost:7214/api/cart");
             var jsonCart = await cartResponse.Content.ReadAsStringAsync();
 
@@ -59,25 +60,31 @@ namespace ShopWeb.Pages
                 PropertyNameCaseInsensitive = true
             });
 
-            if (Cart == null || Cart.items == null || !Cart.items.Any())
+            // ✅ CHECK CART
+            if (Cart == null || Cart.Items == null || !Cart.Items.Any())
             {
                 ErrorMessage = "❌ Giỏ hàng trống";
                 return Page();
             }
 
-            // 🔥 GỌI API TẠO ORDER
-            var content = new StringContent(JsonSerializer.Serialize(Order), Encoding.UTF8, "application/json");
+            // 🔥 GỌI API ORDER
+            var content = new StringContent(
+                JsonSerializer.Serialize(Order),
+                Encoding.UTF8,
+                "application/json"
+            );
 
-            var response = await _httpClient.PostAsync("https://localhost:7214/api/order", content);
+            var response = await _httpClient.PostAsync("https://localhost:7214/api/orders", content);
 
             if (response.IsSuccessStatusCode)
             {
                 SuccessMessage = "✅ Đặt hàng thành công!";
 
-                // 🔥 XÓA GIỎ HÀNG
+                // 🔥 CLEAR CART
                 await _httpClient.DeleteAsync("https://localhost:7214/api/cart/clear");
 
                 Cart = null;
+                Order = new OrderRequestDTO(); // reset form
             }
             else
             {
@@ -86,5 +93,27 @@ namespace ShopWeb.Pages
 
             return Page();
         }
+    }
+
+    // ===== DTO =====
+
+    public class CartDTO
+    {
+        public int Id { get; set; }
+        public List<CartItemDTO> Items { get; set; } = new();
+    }
+
+    public class CartItemDTO
+    {
+        public string Name { get; set; } = "";
+        public int Quantity { get; set; }
+        public double Price { get; set; }
+    }
+
+    public class OrderRequestDTO
+    {
+        public string FullName { get; set; } = "";
+        public string Phone { get; set; } = "";
+        public string Address { get; set; } = "";
     }
 }

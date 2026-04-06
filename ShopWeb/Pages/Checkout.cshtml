@@ -1,84 +1,82 @@
 @page
 @model ShopWeb.Pages.CheckoutModel
-@{
-    ViewData["Title"] = "Thanh toán";
+
+<h2>🛒 Thanh toán</h2>
+
+<!-- 🔥 THÔNG BÁO -->
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div style="color:red">@Model.ErrorMessage</div>
 }
 
-<link rel="stylesheet" href="~/css/checkout.css" />
+@if (!string.IsNullOrEmpty(Model.SuccessMessage))
+{
+    <div style="color:green">@Model.SuccessMessage</div>
+}
 
-<div class="checkout-container">
-    <h2>📦 Thông tin đặt hàng</h2>
+<hr />
 
-    @if (Model.Cart == null || Model.Cart.items == null || !Model.Cart.items.Any())
-    {
-        <div class="empty-cart">❌ Giỏ hàng trống - không thể đặt hàng</div>
-    }
-    else
-    {
-        <form method="post">
+<!-- 🔥 GIỎ HÀNG -->
+@if (Model.Cart != null && Model.Cart.Items != null && Model.Cart.Items.Any())
+{
+    <h3>📦 Giỏ hàng</h3>
 
-            <!-- 🔥 THÔNG TIN NGƯỜI NHẬN -->
-            <div class="form-group">
-                <label>Họ và tên</label>
-                <input asp-for="Order.FullName" required />
-            </div>
-
-            <div class="form-group">
-                <label>Số điện thoại</label>
-                <input asp-for="Order.Phone" required />
-            </div>
-
-            <div class="form-group">
-                <label>Địa chỉ</label>
-                <input asp-for="Order.Address" required />
-            </div>
-
-            <div class="form-group">
-                <label>Ghi chú</label>
-                <textarea asp-for="Order.Note"></textarea>
-            </div>
-
-            <!-- 🔥 DANH SÁCH SẢN PHẨM -->
-            <h3>🛒 Sản phẩm</h3>
-
-            <table class="cart-table">
-                <thead>
-                    <tr>
-                        <th>Tên</th>
-                        <th>SL</th>
-                        <th>Giá</th>
-                        <th>Tổng</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.Cart.items)
-                    {
-                        var total = item.product.price * item.quantity;
-                        <tr>
-                            <td>@item.product.name</td>
-                            <td>@item.quantity</td>
-                            <td>@item.product.price</td>
-                            <td>@total</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-
-            <!-- 🔥 TỔNG TIỀN -->
-            <h3>💰 Tổng tiền: @Model.Cart.TotalAmount.ToString("N0") đ</h3>
-
-            <!-- 🔥 VALIDATION -->
-            @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Tên</th>
+                <th>Số lượng</th>
+                <th>Giá</th>
+                <th>Tổng</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Cart.Items)
             {
-                <div class="error">@Model.ErrorMessage</div>
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Price</td>
+                    <td>@(item.Price * item.Quantity)</td>
+                </tr>
             }
+        </tbody>
+    </table>
 
-            @if (!string.IsNullOrEmpty(Model.SuccessMessage))
-            {
-                <div class="success">@Model.SuccessMessage</div>
-            }
+    <h3>
+        Tổng tiền: 
+        @Model.Cart.Items.Sum(x => x.Price * x.Quantity)
+    </h3>
+}
+else
+{
+    <p>❌ Giỏ hàng trống</p>
+}
 
-            <button type="submit" class="order-btn">Xác nhận đặt hàng</button>
-        </form>
-    }
-</div>
+<hr />
+
+<!-- 🔥 FORM ĐẶT HÀNG -->
+<h3>📋 Thông tin khách hàng</h3>
+
+<form method="post">
+    <div>
+        <label>Họ tên:</label><br />
+        <input asp-for="Order.FullName" />
+    </div>
+
+    <div>
+        <label>Số điện thoại:</label><br />
+        <input asp-for="Order.Phone" />
+    </div>
+
+    <div>
+        <label>Địa chỉ:</label><br />
+        <input asp-for="Order.Address" />
+    </div>
+
+    <!-- ❌ ĐÃ XÓA Order.Note vì DTO không có -->
+
+    <br />
+
+    <button type="submit">✅ Đặt hàng</button>
+</form>

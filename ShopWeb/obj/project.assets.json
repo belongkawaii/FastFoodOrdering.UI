@@ -4748,8 +4748,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\LONG\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\LONG\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -4760,19 +4759,13 @@
       "packagesPath": "C:\\Users\\LONG\\.nuget\\packages\\",
       "outputPath": "D:\\HOCTAP\\HocTapReal\\Nam2-2025\\HK2\\Agile\\FastFoodOrdering\\FastFoodOrdering.UI\\ShopWeb\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\LONG\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\LONG\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

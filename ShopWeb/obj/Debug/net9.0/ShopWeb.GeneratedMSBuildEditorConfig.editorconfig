@@ -32,8 +32,20 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5QYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/HOCTAP/HocTapReal/Nam2-2025/HK2/Agile/FastFoodOrdering/FastFoodOrdering.UI/ShopWeb/Pages/Cart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HOCTAP/HocTapReal/Nam2-2025/HK2/Agile/FastFoodOrdering/FastFoodOrdering.UI/ShopWeb/Pages/Checkout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2hlY2tvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/HOCTAP/HocTapReal/Nam2-2025/HK2/Agile/FastFoodOrdering/FastFoodOrdering.UI/ShopWeb/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HOCTAP/HocTapReal/Nam2-2025/HK2/Agile/FastFoodOrdering/FastFoodOrdering.UI/ShopWeb/Pages/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9yZ290UGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/HOCTAP/HocTapReal/Nam2-2025/HK2/Agile/FastFoodOrdering/FastFoodOrdering.UI/ShopWeb/Pages/Index.cshtml]
@@ -44,8 +56,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/HOCTAP/HocTapReal/Nam2-2025/HK2/Agile/FastFoodOrdering/FastFoodOrdering.UI/ShopWeb/Pages/ProductDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdERldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/HOCTAP/HocTapReal/Nam2-2025/HK2/Agile/FastFoodOrdering/FastFoodOrdering.UI/ShopWeb/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/HOCTAP/HocTapReal/Nam2-2025/HK2/Agile/FastFoodOrdering/FastFoodOrdering.UI/ShopWeb/Pages/Signin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2lnbmluLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/HOCTAP/HocTapReal/Nam2-2025/HK2/Agile/FastFoodOrdering/FastFoodOrdering.UI/ShopWeb/Pages/Signup.cshtml]

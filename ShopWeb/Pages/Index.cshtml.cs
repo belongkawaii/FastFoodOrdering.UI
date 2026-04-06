@@ -142,12 +142,12 @@ namespace ShopWeb.Pages   // 🔥 nhớ đúng namespace project của bạn
     }
 
     public class Product
-    {
-        public int id { get; set; }
-        public string name { get; set; } = "";
-        public decimal price { get; set; }
-        public string imageUrl { get; set; } = "";
-    }
+{
+    public int id { get; set; }
+    public string name { get; set; } = "";
+    public decimal price { get; set; }
+    public string imageUrl { get; set; } = "";
+}
 
     public class CartItem
     {
