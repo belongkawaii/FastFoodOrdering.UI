@@ -64,24 +64,32 @@ namespace ShopWeb.Pages
                 });
 
                 if (response.IsSuccessStatusCode)
+{
+    var result = await response.Content.ReadFromJsonAsync<LoginResponse>();
+            if (result != null && !string.IsNullOrEmpty(result.Token))
+            {
+                // 1. Lưu Token và UserName vào Cookie (như cũ)
+                Response.Cookies.Append("AuthToken", result.Token, new CookieOptions {
+                    HttpOnly = true,
+                    Expires = DateTimeOffset.UtcNow.AddHours(3)
+                });
+                Response.Cookies.Append("UserName", result.fullName);
+
+                // 2. Kiểm tra Role để điều hướng
+                if (result.Role == 0) 
                 {
-                    var result = await response.Content.ReadFromJsonAsync<LoginResponse>();
-                    if (result != null && !string.IsNullOrEmpty(result.Token))
-                    {
-                        
-                        Response.Cookies.Append("AuthToken", result.Token, new CookieOptions
-                        {
-                            HttpOnly = true,
-                            
-                            Expires = DateTimeOffset.UtcNow.AddHours(3)
-                        });
-
-                        Response.Cookies.Append("UserName", result.fullName);
-
-                        TempData["SuccessMsg"] = "Chào mừng bạn đã quay trở lại!";
-                        return RedirectToPage("/Index");
-                    }
+                    // Nếu Role là 0 -> Chuyển đến trang Admin
+                    TempData["SuccessMsg"] = "Chào mừng Admin quay trở lại!";
+                    return RedirectToPage("/AdminPage"); // Đảm bảo bạn có file AdminPage.cshtml
                 }
+                else 
+                {
+                    // Nếu Role là 1 (hoặc các giá trị khác) -> Về Index
+                    TempData["SuccessMsg"] = "Đăng nhập thành công!";
+                    return RedirectToPage("/Index");
+                }
+            }
+        }
 
                 TempData["ErrorMsg"] = "Đăng nhập thất bại. Kiểm tra lại email/mật khẩu.";
                 await OnGetAsync(); // Load lại navbar
@@ -101,6 +109,8 @@ namespace ShopWeb.Pages
         public string Token { get; set; } = "";
         public string Message { get; set; } = "";
         public string fullName { get; set; } = "";
+
+        public int Role { get; set; }
     }
 
     

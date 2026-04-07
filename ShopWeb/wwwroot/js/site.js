@@ -17,7 +17,6 @@ function addToCart() {
 const banners = [
     "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200",
     "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1200",
-    "https://images.unsplash.com/photo-1506089676908-3592f7389d4d?w=1200"
 ];
 
 let index = 0;

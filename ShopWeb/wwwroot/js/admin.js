@@ -22,18 +22,17 @@ function showSection(sectionId, element) {
 
 async function deleteProduct(id) {
     // 1. Xác nhận với người dùng
-    if (!confirm("Bạn có chắc chắn muốn xóa sản phẩm này không?")) {
+    if (!confirm("Bạn có chắc chắn muốn xóa sản phẩm này không? ")) {
         return;
     }
 
     try {
         // 2. Gọi API xóa
-        const res = await fetch(`http://localhost:5014//api/admin/products/${id}`, {
+        const res = await fetch(`http://localhost:5014/api/admin/products/${id}`, {
             method: "DELETE",
             headers: {
-                "Content-Type": "application/json"
-                // Nếu có Token bảo mật, hãy thêm vào đây:
-                // "Authorization": `Bearer ${yourToken}`
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${yourToken}`
             }
         });
 
@@ -51,3 +50,12 @@ async function deleteProduct(id) {
         alert("Đã xảy ra lỗi khi kết nối đến máy chủ.");
     }
 }
+
+function closePageLogin() {
+    loginContainer.classList.add('hidden')
+    overlay.classList.add('hidden')
+}
+
+overlay.addEventListener('click', closePageLogin)
+
+btnClose.addEventListener('click', closePageLogin)

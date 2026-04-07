@@ -12,17 +12,16 @@
     <img id="banner-img" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200">
 </div>
 
-<!-- 🔥 Navbar -->
-    <div class="navbar">
-        <div class="left">
-            <a asp-page="/Index">Trang chủ</a>
-            <a href="#">Giới thiệu</a>
-            <a href="#">Món ăn đề xuất</a>
-        </div>
-
-        <div class="right">
+<!-- Navbar -->
+<div class="navbar">
+    <div class="left">
+        <a asp-page="/Index">Trang chủ</a>
+        <a href="#">Giới thiệu</a>
+        <a href="#">Món ăn đề xuất</a>
+    </div>
+    <div class="right">
             @{
-                var token = HttpContext.Request.Cookies["JWToken"];
+                var token = HttpContext.Request.Cookies["AuthToken"];
                 var user = HttpContext.Request.Cookies["UserName"];
             }
 
@@ -37,8 +36,7 @@
                 <a asp-page="/Signup">Đăng ký</a>
             }
         </div>
-    </div>
-
+</div>
 <div class="container">
     <a asp-page="/AdminPage" class="back-to-admin">
         <i class="fas fa-chevron-left"></i> Quay về trang Admin
@@ -109,25 +107,35 @@
         }
     });
 
-    // save API
     async function saveProduct() {
-        const data = {
-            id: document.getElementById("productId").value,
-            name: document.getElementById("name").value,
-            price: parseFloat(document.getElementById("price").value),
-            imageUrl: document.getElementById("productImage").src
-        };
+    const data = {
+        id: document.getElementById("productId").value,
+        name: document.getElementById("name").value,
+        price: parseFloat(document.getElementById("price").value),
+        imageUrl: document.getElementById("productImage").src 
+    };
 
-        const res = await fetch("/api/products/" + data.id, {
+    try {
+        const res = await fetch("http://localhost:5014/api/admin/products/" + data.id, {
             method: "PUT",
-            headers: { "Content-Type": "application/json" },
+            headers: { 
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + authToken // 🔥 Thêm dòng này để gửi Token
+            },
             body: JSON.stringify(data)
         });
 
         if (res.ok) {
             alert("Lưu thành công!");
+            window.location.reload(); // Load lại trang để cập nhật dữ liệu mới
+        } else if (res.status === 401 || res.status === 403) {
+            alert("Lỗi: Bạn không có quyền chỉnh sửa (Yêu cầu quyền Admin)!");
         } else {
-            alert("Lỗi!");
+            alert("Lỗi khi lưu dữ liệu!");
         }
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Không thể kết nối đến máy chủ API!");
     }
+}
 </script>
