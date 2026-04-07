@@ -27,7 +27,7 @@ public class ProductDetailModel : PageModel
         if (id == null && AllProducts.Count > 0)
             id = AllProducts[0].id;
 
-        var json = await _httpClient.GetStringAsync($"https://localhost:5001/api/products/{id}");
+        var json = await _httpClient.GetStringAsync($"http://localhost:5014/api/products/{id}");
         Product = JsonSerializer.Deserialize<Product>(json, new JsonSerializerOptions
         {
             PropertyNameCaseInsensitive = true
