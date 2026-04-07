@@ -15,11 +15,17 @@
 <div class="navbar">
     <div class="left">
         <a asp-page="/Index">Trang chủ</a>
-        <a href="#">Giới thiệu</a>
-        <a href="#">Món ăn đề xuất</a>
-        <a asp-page="/Cart" class="cart">
-            🛒 Giỏ hàng <span id="cart-count">@Model.Carts?.TotalQuantity</span>
-        </a>
+        <a href="/ComingSoon">Giới thiệu</a>
+        <a href="/ComingSoon">Món ăn đề xuất</a>
+        
+        @{
+            var tokenNav = HttpContext.Request.Cookies["AuthToken"];
+        }
+        @if (!string.IsNullOrEmpty(tokenNav))
+        {
+             
+            <a asp-page="/OrderHistory">Lịch sử mua hàng</a>
+        }
     </div>
     <div class="right">
         @{
@@ -140,7 +146,12 @@
                 // Cập nhật thông tin tổng giỏ hàng & Navbar
                 document.getElementById('cart-total-qty').innerText = `Tổng SL: ${data.cartTotalQty}`;
                 document.getElementById('cart-total-amount').innerText = `Tổng tiền: ${data.cartTotalAmount} đ`;
-                document.getElementById('cart-count').innerText = data.cartTotalQty; 
+
+                // BỌC CÂU LỆNH NÀY VÀO TRONG IF ĐỂ CHỐNG LỖI KHI ĐÃ ẨN NÚT
+                let cartCountBadge = document.getElementById('cart-count');
+                if (cartCountBadge) {
+                cartCountBadge.innerText = data.cartTotalQty;
+                }
 
                 // Nếu xóa sạch giỏ hàng thì load lại trang để hiện chữ "Giỏ hàng trống"
                 if (data.cartTotalQty === 0) {

@@ -12,35 +12,39 @@
 </div>
 
 <!-- 🔥 Navbar -->
-    <div class="navbar">
-        <div class="left">
-            <a asp-page="/Index">Trang chủ</a>
-            <a href="#">Giới thiệu</a>
-            <a href="#">Món ăn đề xuất</a>
+<div class="navbar">
+    @{
+        var token = HttpContext.Request.Cookies["AuthToken"];
+        var user = HttpContext.Request.Cookies["UserName"];
+    }
+
+    <div class="left">
+        <a asp-page="/Index">Trang chủ</a>
+        <a href="/ComingSoon">Giới thiệu</a>
+        <a href="/ComingSoon">Món ăn đề xuất</a>
+
+        @if (!string.IsNullOrEmpty(token))
+        {
             <a asp-page="/Cart" class="cart">
-                🛒 Giỏ hàng <span id="cart-count">@Model.Carts.TotalQuantity</span>
+                🛒 Giỏ hàng <span id="cart-count">@(Model.Carts?.TotalQuantity ?? 0)</span>
             </a>
-        <a asp-page="/OrderHistory">Lịch sử mua hàng</a>
-        </div>
-
-        <div class="right">
-            @{
-                var token = HttpContext.Request.Cookies["AuthToken"];
-                var user = HttpContext.Request.Cookies["UserName"];
-            }
-
-            @if (!string.IsNullOrEmpty(token))
-            {
-                <span class="greeting">Xin chào, @user</span>
-                <a asp-page="/Logout">Đăng xuất</a>
-            }
-            else
-            {
-                <a asp-page="/Signin">Đăng nhập</a>
-                <a asp-page="/Signup">Đăng ký</a>
-            }
-        </div>
+            <a asp-page="/OrderHistory">Lịch sử mua hàng</a>
+        }
     </div>
+
+    <div class="right">
+        @if (!string.IsNullOrEmpty(token))
+        {
+            <span class="greeting">Xin chào, @user</span>
+            <a asp-page="/Logout">Đăng xuất</a>
+        }
+        else
+        {
+            <a asp-page="/Signin">Đăng nhập</a>
+            <a asp-page="/Signup">Đăng ký</a>
+        }
+    </div>
+</div>
 
             
 
@@ -70,7 +74,7 @@
             <span class="currency">VND</span>
             </div>
             <form method="post">
-                <button type="submit" asp-page-handler="AddItem">Đặt hàng</button>
+                <button type="submit" asp-page-handler="AddItem">Thêm vào giỏ hàng</button>
                 <input type="hidden" name="productId" value="@p.id" />
             </form>
         </div>

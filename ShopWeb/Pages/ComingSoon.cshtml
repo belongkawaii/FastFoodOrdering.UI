@@ -1,0 +1,89 @@
+﻿@page
+@model ShopWeb.Pages.ComingSoonModel
+@{
+    ViewData["Title"] = "Tính năng sắp ra mắt";
+}
+
+<div class="coming-soon-container">
+    <div class="coming-soon-content">
+        <div class="icon">🚀</div>
+        
+        <h1>Tính năng sắp ra mắt!</h1>
+
+        @if (!string.IsNullOrEmpty(Model.FeatureName))
+        {
+            <p>Tính năng <strong>"@Model.FeatureName"</strong> hiện đang được nhóm "Đom Đóm nhỏ" nỗ lực xây dựng và hoàn thiện.</p>
+        }
+        else
+        {
+            <p>Tính năng này hiện đang được nhóm "Đom Đóm nhỏ" nỗ lực xây dựng và hoàn thiện.</p>
+        }
+
+        <p>Bạn vui lòng quay lại sau nhé. Cảm ơn bạn đã đồng hành!</p>
+        
+        <a asp-page="/Index" class="back-home-btn">Trở về Trang chủ</a>
+    </div>
+</div>
+
+<style>
+    .coming-soon-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 60vh;
+        background-color: #f5f5fa;
+        font-family: Arial, sans-serif;
+    }
+    
+    .coming-soon-content {
+        text-align: center;
+        background: white;
+        padding: 50px 40px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        max-width: 500px;
+    }
+
+    .coming-soon-content .icon {
+        font-size: 80px;
+        margin-bottom: 20px;
+        /* Hiệu ứng trôi nổi cho icon */
+        animation: float 3s ease-in-out infinite;
+    }
+
+    .coming-soon-content h1 {
+        color: #333;
+        margin-bottom: 15px;
+        font-size: 28px;
+    }
+
+    .coming-soon-content p {
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 10px;
+        font-size: 16px;
+    }
+
+    .back-home-btn {
+        display: inline-block;
+        margin-top: 20px;
+        background-color: #ee4d2d;
+        color: white;
+        text-decoration: none;
+        padding: 12px 25px;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: background 0.3s;
+    }
+
+    .back-home-btn:hover {
+        background-color: #d73d1f;
+        color: white;
+    }
+
+    @@keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0px); }
+    }
+</style>

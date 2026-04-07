@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (result.success) {
                     alert("Đặt lại mật khẩu thành công! Vui lòng đăng nhập bằng mật khẩu mới.");
-                    window.location.href = "/Index"; // Đá về trang chủ
+                    window.location.href = "/Signin"; // Đá về trang đăng nhập
                 } else {
                     errorMessage.textContent = result.message;
                     errorMessage.classList.remove("hidden");

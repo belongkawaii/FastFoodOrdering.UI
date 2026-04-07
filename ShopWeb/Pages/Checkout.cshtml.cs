@@ -9,7 +9,7 @@ namespace ShopWeb.Pages
     public class CheckoutModel : PageModel
     {
         private readonly HttpClient _httpClient;
-        // Đổi thành cổng API thực tế của bạn (VD: 5014)
+       
         private readonly string _apiBaseUrl = "http://localhost:5014/api";
 
         public CheckoutModel(IHttpClientFactory factory)
@@ -99,7 +99,7 @@ namespace ShopWeb.Pages
     public class CartDTO
     {
         public List<CartItemDTO> Items { get; set; }
-        // Razor đang dùng TotalAmount, nếu BE không trả về cột này thì tính thủ công
+        
         public decimal TotalAmount => Items?.Sum(i => i.Quantity * i.Product.Price) ?? 0;
     }
 
