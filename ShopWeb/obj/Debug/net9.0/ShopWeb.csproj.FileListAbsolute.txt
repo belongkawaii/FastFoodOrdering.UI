@@ -587,11 +587,7 @@ D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\Sh
 D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
 D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\scopedcss\bundle\ShopWeb.styles.css
 D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\scopedcss\projectbundle\ShopWeb.bundle.scp.css
-D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\67yslkz1eo-ys2h9saclq.gz
-D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\mv4k76ued3-9f9utga4z0.gz
 D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\00y2ldm04v-61n19gt1b8.gz
-D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\k1yqe3y7b5-4rigtfbp4e.gz
-D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\q8f48o3t20-nuy1mypdbd.gz
 D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\va4c79nj5z-t1cqhe9u97.gz
 D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\elqcb34i05-c2jlpeoesf.gz
 D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\9x2zx4dqh8-sejl45xvog.gz
@@ -663,7 +659,6 @@ D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\Sh
 D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\ShopWeb.pdb
 D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\ShopWeb.genruntimeconfig.cache
 D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\ref\ShopWeb.dll
-D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\ny0o0sjmaz-0gj28h6kx6.gz
 D:\Hoc_Tap\2025-2026_HK2\Agile\FastFoodOrdering.UI\ShopWeb\bin\Debug\net9.0\appsettings.Development.json
 D:\Hoc_Tap\2025-2026_HK2\Agile\FastFoodOrdering.UI\ShopWeb\bin\Debug\net9.0\appsettings.json
 D:\Hoc_Tap\2025-2026_HK2\Agile\FastFoodOrdering.UI\ShopWeb\bin\Debug\net9.0\ShopWeb.staticwebassets.runtime.json
@@ -895,3 +890,15 @@ D:\Hoc_Tap\2025-2026_HK2\Agile\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\refi
 D:\Hoc_Tap\2025-2026_HK2\Agile\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\ShopWeb.pdb
 D:\Hoc_Tap\2025-2026_HK2\Agile\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\ShopWeb.genruntimeconfig.cache
 D:\Hoc_Tap\2025-2026_HK2\Agile\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\ref\ShopWeb.dll
+D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\ny0o0sjmaz-qtj4ftcv82.gz
+D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\m07rk7n9iq-8kwgi160ce.gz
+D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\7vpr7fm9yv-jgy5vv296o.gz
+D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\i4hoh0ju5a-9qif04tf3g.gz
+D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\67yslkz1eo-h5igtc78gt.gz
+D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\501fi9yyjz-bkwjl7gees.gz
+D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\2e88mn6amp-jgvlzkc65f.gz
+D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\k1yqe3y7b5-jtwhfl7nxs.gz
+D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\q8f48o3t20-6lkj62n2ll.gz
+D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\k1d6z0fgcl-lpa8eappy9.gz
+D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\mv4k76ued3-0r4z2w9qib.gz
+D:\HOCTAP\HocTapReal\Nam2-2025\HK2\Agile\FastFoodOrdering\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\3anqe080tu-t14zmdwqg1.gz

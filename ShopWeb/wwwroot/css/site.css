@@ -108,7 +108,7 @@ html, body {
 .banner img {
     width: 100%;
     display: block;
-    height: 300px;
+    height: 200px;
     object-fit: cover;
 }
 

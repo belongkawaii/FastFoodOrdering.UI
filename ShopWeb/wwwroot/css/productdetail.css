@@ -1,0 +1,88 @@
+/* Nền xanh dương cho toàn bộ container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    background-color: #007bff; /* Màu xanh dương chủ đạo */
+    min-height: 80vh;
+}
+/* Định vị nút quay về */
+.back-to-admin {
+    position: absolute; /* Đặt vị trí tuyệt đối để dễ dàng định vị */
+    top: 20px;    /* Cách mép trên của vùng xanh 20px */
+    left: 20px;   /* Cách mép trái của vùng xanh 20px */
+    text-decoration: none;
+    color: white;
+    background-color: rgb(6, 2, 255); /* Nền trắng mờ */
+    padding: 8px 16px;
+    border-radius: 5px;
+    border: 1px solid white;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.back-to-admin:hover {
+    background-color: white;
+    color: #007bff;
+}
+/* Khung trắng chứa nội dung chính */
+.product-box {
+    width: 900px;
+    background: white; /* Nền trắng như bạn muốn */
+    padding: 30px;
+    display: flex;
+    gap: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* Chỉ ảnh hưởng đến cột bên trái TRONG product-box */
+.product-box .left {
+    width: 40%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-box .left img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #eee;
+}
+
+/* Chỉ ảnh hưởng đến cột bên phải TRONG product-box */
+.product-box .right {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Tạo khoảng cách giữa các phần tử từ trên xuống */
+}
+
+.product-box .right label {
+    font-weight: bold;
+    margin-top: 10px;
+    color: #333;
+}
+
+.product-box .right input,
+.product-box .right select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Nút lưu */
+.save-btn {
+    margin-top: 20px;
+    padding: 12px;
+    background: #ff5722;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}

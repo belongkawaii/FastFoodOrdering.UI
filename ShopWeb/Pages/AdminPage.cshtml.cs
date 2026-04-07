@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
-
+namespace ShopWeb.Pages
+{
 public class AdminPageModel : PageModel
 {
         private readonly HttpClient _httpClient;
@@ -17,12 +18,5 @@ public class AdminPageModel : PageModel
             var response = await _httpClient.GetFromJsonAsync<List<Product>>("http://localhost:5014/api/products");
             Products = response ?? new List<Product>();
         }
-    public class Product
-    {
-        public int id { get; set; } 
-        public string name { get; set; } = "";
-        public decimal price { get; set; }
-        public string imageUrl { get; set; } = "";
-        
-    }
+}
 }
