@@ -50,6 +50,7 @@ btnOpen.addEventListener('click', (e) => {
     loginContainer.classList.remove('hidden')
     overlay.classList.remove('hidden')
 })
+
 function closePageLogin() {
     loginContainer.classList.add('hidden')
     overlay.classList.add('hidden')

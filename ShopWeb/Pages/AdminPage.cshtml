@@ -1,4 +1,5 @@
 @page
+@using System.Net
 @model AdminPageModel
 @{
     ViewData["Title"] = "Admin Dashboard";
@@ -179,7 +180,13 @@
                             </td>
                             <td style="text-align:right;">
                                 <button class="btn-update" onclick="location.href='/ProductDetail/@p.id'"> Sửa </button>
-                                <button class="btn-danger" onclick="deleteProduct('@p.id')">Xóa</button>
+                                <form method="post" asp-page-handler="DeleteProduct" asp-route-id="@p.id" 
+                                    onsubmit="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')">
+                                    
+                                    <button class="btn-danger" style="cursor:pointer;">
+                                        <i class="fas fa-trash"></i> Xóa
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     }
@@ -307,4 +314,4 @@
         });
         }
         });
-    </script>
+</script>
