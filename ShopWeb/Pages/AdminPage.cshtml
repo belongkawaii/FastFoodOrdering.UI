@@ -139,9 +139,9 @@
             <table>
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Tên sản phẩm</th>
                         <th>Giá</th>
-                        <th>Số lượng</th>
                         <th>Hành động</th>
                     </tr>
                 </thead>
@@ -149,18 +149,12 @@
                     @foreach (var p in Model.Products)
                     {
                         <tr>
+                            <td>@p.id</td>
                             <td>@p.name</td>
                             <td>@p.price.ToString("N0") VND</td>
-                            <td>
-                                <input type="number"
-                                value="1"
-                                min="0"
-                                class="quantity-input"
-                                data-id="@p.id" />
-                            </td>
                             <td style="text-align:right;">
-                                <button class="btn-update">Sửa</button>
-                                <button class="btn-danger">Xóa</button>
+                                <button class="btn-update" onclick="location.href='/ProductDetail/@p.id'"> Sửa </button>
+                                <button class="btn-danger" onclick="deleteProduct('@p.id')">Xóa</button>
                             </td>
                         </tr>
                     }
@@ -261,31 +255,4 @@
 
 <!-- SCRIPT -->
 <script src="~/js/admin.js">
-
-    // Fetch API 
-    /*
-    async function loadProducts() {
-        const res = await fetch("http://localhost:5014/api/products");
-        const data = await res.json();
-
-        const table = document.getElementById("product-list");
-        table.innerHTML = "";
-
-        data.forEach(p => {
-            table.innerHTML += `
-                <tr>
-                    <td>${p.id}</td>
-                    <td>${p.name}</td>
-                    <td>${p.price}</td>
-                    <td>
-                        <button>Sửa</button>
-                        <button>Xóa</button>
-                    </td>
-                </tr>
-            `;
-        });
-    }
-
-    loadProducts();
-    */
 </script>
