@@ -73,7 +73,7 @@
                 <label>Giá tiền:</label>
                 <input type="number" name="ProductPrice" value="@Model.Product.price" />
 
-                <button type="submit">Lưu lại</button>
+                <button type="submit" class="save-btn" style="background-color: #28a745; margin-top: 20px;">Lưu lại</button>
         </div>
 
     </div>
@@ -95,6 +95,8 @@
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
     // đổi món khi chọn ID
     function changeProduct() {
@@ -109,4 +111,28 @@
             document.getElementById("productImage").src = URL.createObjectURL(file);
         }
     });
+    document.addEventListener("DOMContentLoaded", function () {
+        // Lấy dữ liệu từ TempData thông qua Razor
+        var successMsg = "@Html.Raw(TempData["SuccessMsg"])";
+        var errorMsg = "@Html.Raw(TempData["ErrorMsg"])";
+
+        if (successMsg) {
+        Swal.fire({
+        icon: 'success',
+        title: 'Thành công!',
+        text: successMsg,
+        timer: 2000,
+        showConfirmButton: false
+        });
+        }
+
+        if (errorMsg) {
+        Swal.fire({
+        icon: 'error',
+        title: 'Rất tiếc...',
+        text: errorMsg,
+        confirmButtonColor: '#d33'
+        });
+        }
+        });
 </script>

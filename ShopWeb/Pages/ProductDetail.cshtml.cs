@@ -41,7 +41,7 @@ namespace ShopWeb.Pages
         // Xử lý lưu dữ liệu (Gọi khi bấm nút Save)
         public async Task<IActionResult> OnPostSaveProductAsync(int id)
         {
-            // Bước 1: Lấy dữ liệu trực tiếp từ Request.Form (Không dùng BindProperty)
+            // Bước 1: Lấy dữ liệu trực tiếp từ Request.Form
             var name = Request.Form["ProductName"];
             var price = Request.Form["ProductPrice"];
             var description = Request.Form["ProductDescription"];
@@ -73,6 +73,7 @@ namespace ShopWeb.Pages
 
             if (response.IsSuccessStatusCode)
             {
+                TempData["SuccessMsg"] = "Cập nhật sản phẩm thành công!";
                 // Thành công thì load lại trang chi tiết sản phẩm đó
                 return RedirectToPage(new { id = id });
             }

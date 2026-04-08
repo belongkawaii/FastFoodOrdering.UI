@@ -1,0 +1,94 @@
+@page
+@model AddProductAdminModel
+@{
+    ViewData["Title"] = "Thêm sản phẩm mới";
+}
+
+<link rel="stylesheet" href="~/css/productdetail.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+
+<div class="banner">
+    <img id="banner-img" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200">
+</div>
+
+<div class="navbar">
+    <div class="left">
+        <a asp-page="/Index">Trang chủ</a>
+        <a href="#">Giới thiệu</a>
+    </div>
+    <div class="right">
+        @{
+            var token = HttpContext.Request.Cookies["AuthToken"];
+            var user = HttpContext.Request.Cookies["UserName"];
+        }
+        @if (!string.IsNullOrEmpty(token))
+        {
+            <span class="greeting">Xin chào, @user</span>
+            <a asp-page="/Logout">Đăng xuất</a>
+        }
+    </div>
+</div>
+
+<div class="container">
+    <a asp-page="/AdminPage" class="back-to-admin">
+        <i class="fas fa-chevron-left"></i> Quay về trang Admin
+    </a>
+
+    <form method="post" asp-page-handler="SaveProduct" asp-route-id="@Model.Product.id" enctype="multipart/form-data">
+        <div class="product-box">
+            
+            <div class="left">
+                <img id="productImage" style="display:none; max-width: 100%; border-radius: 8px;" />
+                <div id="imagePlaceholder" style="width: 200px; height: 200px; background: #eee; display: flex; align-items: center; justify-content: center; border: 2px dashed #ccc;">
+                    <span>Chưa có ảnh</span>
+                </div>
+                <input type="file" name="UploadedImage" id="imageInput" hidden onchange="previewImage(this)" required />
+                <button type="button" onclick="document.getElementById('imageInput').click()" style="margin-top: 10px;">
+                    Chọn ảnh sản phẩm
+                </button>
+            </div>
+
+            <div class="right">
+                <h2 style="margin-bottom: 20px;">Thông tin sản phẩm mới</h2>
+
+                <label>Tên sản phẩm:</label>
+                <input type="text" name="ProductName" placeholder="Nhập tên món ăn..." required />
+
+                <label>Mô tả:</label>
+                <textarea name="ProductDescription" rows="4" placeholder="Nhập mô tả món ăn..." required></textarea>
+
+                <label>Giá tiền:</label>
+                <input type="number" name="ProductPrice" placeholder="Ví dụ: 50000" required />
+
+                <button type="submit" class="save-btn" style="background-color: #28a745; margin-top: 20px;">
+                    Thêm sản phẩm mới
+                </button>
+
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <div style="color: red; margin-top: 10px;">
+                        @Html.ValidationSummary(true)
+                    </div>
+                }
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    // Hàm preview ảnh và thay đổi hiển thị 
+    function previewImage(input) {
+        const preview = document.getElementById("productImage");
+        const placeholder = document.getElementById("imagePlaceholder");
+
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = "block";
+                placeholder.style.display = "none";
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
