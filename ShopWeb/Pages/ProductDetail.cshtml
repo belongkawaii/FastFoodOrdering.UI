@@ -41,14 +41,13 @@
     <a asp-page="/AdminPage" class="back-to-admin">
         <i class="fas fa-chevron-left"></i> Quay về trang Admin
     </a>
+    <form method="post" asp-page-handler="SaveProduct" asp-route-id="@Model.Product.id" enctype="multipart/form-data">
     <div class="product-box">
         <!-- LEFT: IMAGE -->
         <div class="left">
-            <img id="productImage" src="http://localhost:5014/@Model.Product.imageUrl" alt="Ảnh sản phẩm" />          
-            <input type="file" id="imageInput" hidden />
-            <button onclick="document.getElementById('imageInput').click()">
-                Chọn ảnh
-            </button>
+            <img id="productImage" src="http://localhost:5014/@Model.Product.imageUrl" />
+            <input type="file" name="UploadedImage" id="imageInput" hidden onchange="previewImage(this)" />
+            <button type="button" onclick="document.getElementById('imageInput').click()">Thay ảnh</button>
         </div>
 
         <!-- RIGHT: INFO -->
@@ -65,16 +64,20 @@
                 }
             </select>
 
-            <label>Tên món:</label>
-            <input id="name" value="@Model.Product.name" />
+                <label>Tên sản phẩm:</label>
+                <input type="text" name="ProductName" value="@Model.Product.name" />
 
-            <label>Giá:</label>
-            <input id="price" type="number" value="@Model.Product.price" />
+                <label>Mô tả:</label>
+                <textarea name="ProductDescription">@Model.Product.description</textarea>
 
-            <button class="save-btn" onclick="saveProduct()">Lưu thay đổi</button>
+                <label>Giá tiền:</label>
+                <input type="number" name="ProductPrice" value="@Model.Product.price" />
+
+                <button type="submit">Lưu lại</button>
         </div>
 
     </div>
+    </form>
 </div>
 
 <!-- 🔥 Footer -->
@@ -106,36 +109,4 @@
             document.getElementById("productImage").src = URL.createObjectURL(file);
         }
     });
-
-    async function saveProduct() {
-    const data = {
-        id: document.getElementById("productId").value,
-        name: document.getElementById("name").value,
-        price: parseFloat(document.getElementById("price").value),
-        imageUrl: document.getElementById("productImage").src 
-    };
-
-    try {
-        const res = await fetch("http://localhost:5014/api/admin/products/" + data.id, {
-            method: "PUT",
-            headers: { 
-                "Content-Type": "application/json",
-                "Authorization": "Bearer " + authToken // 🔥 Thêm dòng này để gửi Token
-            },
-            body: JSON.stringify(data)
-        });
-
-        if (res.ok) {
-            alert("Lưu thành công!");
-            window.location.reload(); // Load lại trang để cập nhật dữ liệu mới
-        } else if (res.status === 401 || res.status === 403) {
-            alert("Lỗi: Bạn không có quyền chỉnh sửa (Yêu cầu quyền Admin)!");
-        } else {
-            alert("Lỗi khi lưu dữ liệu!");
-        }
-    } catch (error) {
-        console.error("Error:", error);
-        alert("Không thể kết nối đến máy chủ API!");
-    }
-}
 </script>
