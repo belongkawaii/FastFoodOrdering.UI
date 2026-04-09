@@ -54,34 +54,29 @@ namespace ShopWeb.Pages
 
         // 🔥 HÀM XỬ LÝ XÓA SẢN PHẨM
         public async Task<IActionResult> OnPostDeleteProductAsync(int id)
-        {
-            var token = Request.Cookies["AuthToken"];
-            if (string.IsNullOrEmpty(token)) return RedirectToPage("/Signin");
-
-            try
             {
-                // Gắn token vào header để xác thực quyền xóa với API
-                _httpClient.DefaultRequestHeaders.Authorization = 
-                    new AuthenticationHeaderValue("Bearer", token);
+                var token = Request.Cookies["AuthToken"];
+                if (string.IsNullOrEmpty(token)) return new JsonResult(new { success = false, message = "Unauthorized" });
 
-                // Gọi API DELETE (Lưu ý: URL phải khớp với cấu hình API của bạn)
-                var response = await _httpClient.DeleteAsync($"http://localhost:5014/api/admin/products/{id}");
-
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    TempData["SuccessMsg"] = "Xóa sản phẩm thành công!";
+                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                    
+                    // Gọi tới API backend của bạn
+                    var response = await _httpClient.DeleteAsync($"http://localhost:5014/api/admin/products/{id}");
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        // Trả về kết quả thành công cho AJAX
+                        return new JsonResult(new { success = true, message = "Xóa sản phẩm thành công!" });
+                    }
+                    
+                    return new JsonResult(new { success = false, message = "API trả về lỗi: " + response.StatusCode });
                 }
-                else
+                catch (Exception ex)
                 {
-                    TempData["ErrorMsg"] = "Không thể xóa. API trả về lỗi: " + response.StatusCode;
+                    return new JsonResult(new { success = false, message = ex.Message });
                 }
             }
-            catch (Exception ex)
-            {
-                TempData["ErrorMsg"] = "Lỗi khi gọi API xóa: " + ex.Message;
-            }
-
-            return RedirectToPage(); // Refresh lại trang Admin
-        }
     }
 }

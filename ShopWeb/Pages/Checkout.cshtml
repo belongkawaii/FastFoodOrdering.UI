@@ -80,7 +80,71 @@
                 <div class="error">@Model.ErrorMessage</div>
             }
 
-            <button type="submit" class="order-btn">Xác nhận đặt hàng</button>
+            
+            <h3>💳 Phương thức thanh toán</h3>
+            <div class="payment-methods" style="margin-bottom: 20px;">
+                <div style="margin-bottom: 10px;">
+                    <input type="radio" asp-for="Order.PaymentMethod" value="0" id="payCOD" checked onclick="toggleQR(false)">
+                    <label for="payCOD">Thanh toán khi nhận hàng (COD)</label>
+                </div>
+                <div>
+                    <input type="radio" asp-for="Order.PaymentMethod" value="1" id="payTransfer" onclick="toggleQR(true)">
+                    <label for="payTransfer">Chuyển khoản ngân hàng (VietQR)</label>
+                </div>
+            </div>
+
+            <div id="qr-section" style="display: none; border: 1px dashed #ee4d2d; padding: 20px; text-align: center; border-radius: 8px; margin-bottom: 20px; background-color: #fffaf9;">
+                <h4>Quét mã QR để thanh toán</h4>
+                @{
+                    // Giả lập thông tin ngân hàng
+                    var bankId = "970436"; // Vietcombank
+                    var accountNo = "123456789";
+                    var accountName = "SHOP DOM DOM NHO";
+                    var amount = Model.Cart?.TotalAmount ?? 0;
+                    var description = $"Thanh toan don hang {DateTime.Now:yyyyMMddHHmm}";
+                    var qrUrl = $"https://img.vietqr.io/image/{bankId}-{accountNo}-compact2.png?amount={amount}&addInfo={Uri.EscapeDataString(description)}&accountName={Uri.EscapeDataString(accountName)}";
+                }
+                <img src="@qrUrl" alt="Mã QR Thanh toán" style="max-width: 250px; border: 5px solid #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1);" />
+                <p style="font-size: 14px; color: #555; margin-top: 10px;">Vui lòng quét mã và thực hiện chuyển khoản.</p>
+                
+                <div style="margin-top: 15px;">
+                    <input type="checkbox" id="confirmPaid" onchange="validatePayment()">
+                    <label for="confirmPaid" style="font-weight: bold; color: #ee4d2d;">Tôi đã chuyển khoản thành công</label>
+                </div>
+            </div>
+
+            <button type="submit" id="submitBtn" class="order-btn">Xác nhận đặt hàng</button>
         </form>
     }
 </div>
+
+<script>
+    function toggleQR(show) {
+        const qrSection = document.getElementById('qr-section');
+        const submitBtn = document.getElementById('submitBtn');
+        const confirmPaid = document.getElementById('confirmPaid');
+
+        if (show) {
+            qrSection.style.display = 'block';
+            submitBtn.disabled = true; // Khóa nút nếu chưa tích "Đã chuyển khoản"
+            submitBtn.style.opacity = '0.5';
+        } else {
+            qrSection.style.display = 'none';
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = '1';
+        }
+    }
+
+    function validatePayment() {
+        const confirmPaid = document.getElementById('confirmPaid');
+        const submitBtn = document.getElementById('submitBtn');
+        
+        if (confirmPaid.checked) {
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = '1';
+        } else {
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.5';
+        }
+    }
+</script>

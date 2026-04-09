@@ -121,5 +121,7 @@ namespace ShopWeb.Pages
         public string Phone { get; set; } = string.Empty;
         public string Address { get; set; } = string.Empty;
         public string? Note { get; set; }
+
+        public int PaymentMethod { get; set; } = 0; // 0 = COD, 1 = Transfer  
     }
 }
