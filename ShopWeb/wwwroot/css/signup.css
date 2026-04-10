@@ -129,3 +129,39 @@ body {
 .hidden {
     display: none !important;
 }
+
+/* =========================
+   📱 RESPONSIVE FOR MOBILE
+========================= */
+@media (max-width: 768px) {
+    /* 1. Ẩn phần banner bên trái */
+    .signup-left {
+        display: none;
+    }
+
+    /* 2. Cấu hình lại phần bên phải chiếm toàn màn hình */
+    .signup-right {
+        flex: 1; /* Chiếm toàn bộ không gian còn lại */
+        width: 100%;
+        padding: 20px;
+        background: #f5f5f5; /* Giữ màu nền xám nhẹ hoặc đổi thành trắng tùy thích */
+    }
+
+    /* 3. Tăng độ rộng của khung form trên màn hình nhỏ */
+    .form-outer {
+        width: 100%; /* Cho phép chiếm hết chiều ngang */
+        max-width: 100%; 
+        padding: 0 10px;
+    }
+
+    /* 4. Đảm bảo khung bên trong hiển thị đẹp trên mobile */
+    .form-inner {
+        padding: 25px 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Giảm đổ bóng để trông thanh thoát hơn */
+    }
+    
+    /* 5. Điều chỉnh banner phía trên (nếu có dùng ở trang này) */
+    .top-banner {
+        height: 150px; /* Thu nhỏ chiều cao banner trên mobile */
+    }
+}
