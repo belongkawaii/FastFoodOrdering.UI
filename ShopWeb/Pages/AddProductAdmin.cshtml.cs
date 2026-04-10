@@ -28,12 +28,13 @@ namespace ShopWeb.Pages
         {
             // Lấy dữ liệu thủ công từ Request.Form
             var name = Request.Form["ProductName"];
-            var price = Request.Form["ProductPrice"];
+            var priceStr = Request.Form["Product.price"].ToString().Replace(".", "");
+                decimal price = decimal.Parse(priceStr);    
             var description = Request.Form["ProductDescription"];
             var imageFile = Request.Form.Files["UploadedImage"];
 
             // KIỂM TRA: Bắt buộc điền full mọi ô và phải có ảnh
-            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(price) || 
+            if (string.IsNullOrEmpty(name) || price <= 0 || 
                 string.IsNullOrEmpty(description) || imageFile == null || imageFile.Length == 0)
             {
                 ModelState.AddModelError(string.Empty, "Vui lòng nhập đầy đủ thông tin và chọn ảnh sản phẩm.");

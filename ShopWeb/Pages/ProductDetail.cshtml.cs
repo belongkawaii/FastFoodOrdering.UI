@@ -43,7 +43,8 @@ namespace ShopWeb.Pages
         {
             // Bước 1: Lấy dữ liệu trực tiếp từ Request.Form
             var name = Request.Form["ProductName"];
-            var price = Request.Form["ProductPrice"];
+            var priceStr = Request.Form["Product.price"].ToString().Replace(".", "");
+                decimal price = decimal.Parse(priceStr);    
             var description = Request.Form["ProductDescription"];
             var imageFile = Request.Form.Files["UploadedImage"];
 

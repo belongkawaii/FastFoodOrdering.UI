@@ -1,7 +1,11 @@
 @page "{id?}"
 @model ProductDetailModel
+@using System.Globalization
 @{
     ViewData["Title"] = "Chi tiết sản phẩm";
+    // Giả sử giá trị là decimal hoặc int
+    decimal price = 50000; 
+    var formattedPrice = string.Format(new CultureInfo("vi-VN"), "{0:N0} ₫", price);
 }
 
 <link rel="stylesheet" href="~/css/productdetail.css" />
@@ -37,10 +41,14 @@
             }
         </div>
 </div>
+<div class="back-nav-wrapper">
+    <div class="content-limit">
+        <a asp-page="/AdminPage" class="back-to-admin">
+            <i class="fas fa-chevron-left"></i> Quay về trang Admin
+        </a>
+    </div>
+</div>
 <div class="container">
-    <a asp-page="/AdminPage" class="back-to-admin">
-        <i class="fas fa-chevron-left"></i> Quay về trang Admin
-    </a>
     <form method="post" asp-page-handler="SaveProduct" asp-route-id="@Model.Product.id" enctype="multipart/form-data">
     <div class="product-box">
         <!-- LEFT: IMAGE -->
@@ -70,9 +78,20 @@
                 <label>Mô tả:</label>
                 <textarea name="ProductDescription">@Model.Product.description</textarea>
 
-                <label>Giá tiền:</label>
-                <input type="number" name="ProductPrice" value="@Model.Product.price" />
-
+                <label asp-for="Product.price">Giá tiền:</label>
+                    <div class="price-input-wrapper">
+                        @* Chuyển sang type="text" để cho phép hiển thị dấu chấm *@
+                        <input id="PriceFormat" 
+                            class="form-control" 
+                            type="text" 
+                            placeholder="Ví dụ: 50.000" 
+                            value="@(Model.Product.price > 0 ? Model.Product.price.ToString("N0", new System.Globalization.CultureInfo("vi-VN")) : "")" />
+                        
+                        @* Hidden field để lưu giá trị số thực tế gửi về Server *@
+                        <input type="hidden" asp-for="Product.price" id="ProductPriceRaw" />
+                        
+                        <span class="currency-symbol">₫</span>
+                    </div>
                 <button type="submit" class="save-btn" style="background-color: #28a745; margin-top: 20px;">Lưu lại</button>
         </div>
 
@@ -135,4 +154,24 @@
         });
         }
         });
+
+        document.addEventListener('DOMContentLoaded', function () {
+    const displayInput = document.getElementById('PriceFormat');
+    const rawInput = document.getElementById('ProductPriceRaw');
+
+    displayInput.addEventListener('input', function (e) {
+        // 1. Lấy giá trị chỉ bao gồm số
+        let value = e.target.value.replace(/\D/g, '');
+
+        // 2. Lưu giá trị số thuần túy vào hidden input để gửi lên server
+        rawInput.value = value;
+
+        // 3. Định dạng lại hiển thị có dấu chấm
+        if (value) {
+            e.target.value = new Intl.NumberFormat('vi-VN').format(value);
+        } else {
+            e.target.value = '';
+        }
+    });
+});
 </script>
