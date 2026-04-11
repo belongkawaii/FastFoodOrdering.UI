@@ -2,8 +2,14 @@
 @model ShopWeb.Pages.ComingSoonModel
 @{
     ViewData["Title"] = "Tính năng sắp ra mắt";
+    ViewData["HeroBadge"] = "Sắp ra mắt";
+    ViewData["HeroTitle"] = "Chúng mình đang hoàn thiện tính năng này";
+    ViewData["HeroSubtitle"] = "Một vài trải nghiệm mới đang được chuẩn bị để đồng bộ với giao diện hiện tại của website.";
 }
 
+<partial name="_SiteHeader" />
+
+<div class="site-shell-main site-shell-main--narrow">
 <div class="coming-soon-container">
     <div class="coming-soon-content">
         <div class="icon">🚀</div>
@@ -87,3 +93,5 @@
         100% { transform: translateY(0px); }
     }
 </style>
+</div>
+<partial name="_SiteFooter" />

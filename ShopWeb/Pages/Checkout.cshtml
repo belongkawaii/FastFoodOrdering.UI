@@ -2,10 +2,16 @@
 @model ShopWeb.Pages.CheckoutModel
 @{
     ViewData["Title"] = "Thanh toán";
+    ViewData["HeroBadge"] = "Hoàn tất đơn hàng";
+    ViewData["HeroTitle"] = "Xác nhận thông tin giao hàng";
+    ViewData["HeroSubtitle"] = "Kiểm tra thông tin liên hệ, địa chỉ và phương thức thanh toán trước khi gửi đơn.";
 }
 
 <link rel="stylesheet" href="~/css/checkout.css" />
 
+<partial name="_SiteHeader" />
+
+<div class="site-shell-main site-shell-main--narrow">
 <div class="checkout-container">
     <h2>📦 Thông tin đặt hàng</h2>
 
@@ -123,6 +129,7 @@
         </form>
     }
 </div>
+</div>
 
 <script src="~/js/checkout.js" asp-append-version="true"></script>
 <script src="~/js/checkout-form.js" asp-append-version="true"></script>
@@ -156,3 +163,4 @@
         }
     }
 </script>
+<partial name="_SiteFooter" />

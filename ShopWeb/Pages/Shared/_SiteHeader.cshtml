@@ -1,0 +1,70 @@
+@{
+    var token = Context.Request.Cookies["AuthToken"];
+    var user = Context.Request.Cookies["UserName"];
+    var role = Context.Request.Cookies["UserRole"];
+    var isAdmin = !string.IsNullOrEmpty(token) && role == "0";
+    var heroBadge = ViewData["HeroBadge"] as string ?? "Fast food giao nhanh";
+    var heroTitle = ViewData["HeroTitle"] as string ?? (ViewData["Title"] as string ?? "Đom Đóm nhỏ HCMUE");
+    var heroSubtitle = ViewData["HeroSubtitle"] as string ?? "Giao diện đồng bộ, rõ ràng và thân thiện trên mọi thiết bị.";
+    var heroImage = ViewData["HeroImage"] as string ?? "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200";
+    var currentPath = Context.Request.Path.Value ?? string.Empty;
+    bool IsCurrent(string path) => currentPath.Equals(path, StringComparison.OrdinalIgnoreCase);
+}
+
+<div class="site-shell">
+    <section class="site-hero">
+        <img src="@heroImage" alt="@heroTitle">
+        <div class="site-hero__overlay">
+            <div class="site-hero__copy">
+                <span class="site-hero__badge">@heroBadge</span>
+                <h1>@heroTitle</h1>
+                <p>@heroSubtitle</p>
+            </div>
+        </div>
+    </section>
+
+    <nav class="site-nav" aria-label="Điều hướng chính">
+        <div class="site-nav__top">
+            <a asp-page="/Index" class="site-brand">Đom Đóm nhỏ HCMUE</a>
+            <button class="site-nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav-links">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span class="site-visually-hidden">Mở menu</span>
+            </button>
+        </div>
+
+        <div class="site-nav__menu" id="site-nav-links">
+            <div class="site-nav__group">
+                <a asp-page="/Index" class="@(IsCurrent("/") || IsCurrent("/Index") ? "is-current" : string.Empty)">Trang chủ</a>
+                <a href="/ComingSoon" class="@(IsCurrent("/ComingSoon") ? "is-current" : string.Empty)">Giới thiệu</a>
+                <a href="/ComingSoon">Món ăn đề xuất</a>
+                @if (!isAdmin && !string.IsNullOrEmpty(token))
+                {
+                    <a asp-page="/OrderHistory" class="@(IsCurrent("/OrderHistory") ? "is-current" : string.Empty)">Lịch sử mua hàng</a>
+                }
+            </div>
+
+            <div class="site-nav__group site-nav__group--account">
+                @if (!string.IsNullOrEmpty(token))
+                {
+                    @if (isAdmin)
+                    {
+                        <a asp-page="/AdminPage" class="site-pill @(IsCurrent("/AdminPage") ? "is-current" : string.Empty)">Quản lí</a>
+                    }
+                    else
+                    {
+                        <a asp-page="/Cart" class="site-pill @(IsCurrent("/Cart") ? "is-current" : string.Empty)">Giỏ hàng</a>
+                    }
+                    <span class="site-greeting">Xin chào, @user</span>
+                    <a asp-page="/Logout" class="site-pill site-pill--ghost">Đăng xuất</a>
+                }
+                else
+                {
+                    <a asp-page="/Signin" class="site-pill site-pill--ghost @(IsCurrent("/Signin") ? "is-current" : string.Empty)">Đăng nhập</a>
+                    <a asp-page="/Signup" class="site-pill @(IsCurrent("/Signup") ? "is-current" : string.Empty)">Đăng ký</a>
+                }
+            </div>
+        </div>
+    </nav>
+</div>

@@ -2,10 +2,16 @@
 @model ShopWeb.Pages.OrderHistoryModel
 @{
     ViewData["Title"] = "Lịch sử đơn hàng";
+    ViewData["HeroBadge"] = "Theo dõi đơn hàng";
+    ViewData["HeroTitle"] = "Lịch sử mua hàng của bạn";
+    ViewData["HeroSubtitle"] = "Xem lại các đơn đã đặt, trạng thái xử lý và thao tác hủy đơn khi còn chờ xác nhận.";
 }
 
 @Html.AntiForgeryToken()
 
+<partial name="_SiteHeader" />
+
+<div class="site-shell-main site-shell-main--narrow">
 <div class="checkout-container" style="max-width: 1000px; margin: 40px auto; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
     <h2 style="border-bottom: 2px solid #ee4d2d; padding-bottom: 10px;">📦 Lịch sử đơn hàng của bạn</h2>
 
@@ -120,3 +126,5 @@
     });
     }
 </script>
+</div>
+<partial name="_SiteFooter" />

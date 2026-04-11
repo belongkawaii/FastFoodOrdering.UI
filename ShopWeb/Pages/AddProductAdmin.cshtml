@@ -3,36 +3,18 @@
 @using System.Globalization
 @{
     ViewData["Title"] = "Thêm sản phẩm mới";
+    ViewData["HeroBadge"] = "Thao tác quản trị";
+    ViewData["HeroTitle"] = "Thêm món mới vào thực đơn";
+    ViewData["HeroSubtitle"] = "Cập nhật hình ảnh, mô tả và giá bán trong một layout đồng bộ với trang chủ hiện tại.";
     // Giả sử giá trị là decimal hoặc int
     decimal price = 50000; 
     var formattedPrice = string.Format(new CultureInfo("vi-VN"), "{0:N0} ₫", price);
 }
 
 <link rel="stylesheet" href="~/css/productdetail.css" />
-<link rel="stylesheet" href="~/css/site.css" />
+<partial name="_SiteHeader" />
 
-<div class="banner">
-    <img id="banner-img" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200">
-</div>
-
-<div class="navbar">
-    <div class="left">
-        <a asp-page="/Index">Trang chủ</a>
-        <a href="#">Giới thiệu</a>
-    </div>
-    <div class="right">
-        @{
-            var token = HttpContext.Request.Cookies["AuthToken"];
-            var user = HttpContext.Request.Cookies["UserName"];
-        }
-        @if (!string.IsNullOrEmpty(token))
-        {
-            <span class="greeting">Xin chào, @user</span>
-            <a asp-page="/Logout">Đăng xuất</a>
-        }
-    </div>
-</div>
-
+<div class="site-shell-main site-shell-main--wide">
 <div class="back-nav-wrapper">
     <div class="content-limit">
         <a asp-page="/AdminPage" class="back-to-admin">
@@ -94,6 +76,8 @@
         </div>
     </form>
 </div>
+</div>
+<partial name="_SiteFooter" />
 
 <script>
     // Hàm preview ảnh và thay đổi hiển thị 

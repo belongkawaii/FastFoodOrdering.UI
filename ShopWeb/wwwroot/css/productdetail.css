@@ -4,14 +4,16 @@
     justify-content: center;
     align-items: center;
     padding: 60px 20px;
-    background-color: #007bff; /* Màu xanh dương chủ đạo */
+    background: linear-gradient(180deg, rgba(255, 179, 71, 0.16) 0%, rgba(143, 45, 20, 0.08) 100%);
+    border-radius: 28px;
     min-height: 80vh;
 }
 /* Khối bao quanh để căn lề cho nút */
 .back-nav-wrapper {
-    background-color: #f8f9fa; /* Màu nền xám nhạt cho thanh điều hướng phụ */
+    background-color: rgba(255, 253, 249, 0.92); /* Màu nền đồng bộ với shell */
     padding: 15px 0;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid rgba(109, 29, 9, 0.12);
+    border-radius: 20px 20px 0 0;
 }
 
 .content-limit {
@@ -43,8 +45,8 @@
     padding: 30px;
     display: flex;
     gap: 40px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-radius: 22px;
+    box-shadow: 0 16px 32px rgba(74, 33, 14, 0.12);
 }
 
 /* Chỉ ảnh hưởng đến cột bên trái TRONG product-box */

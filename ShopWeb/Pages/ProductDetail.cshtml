@@ -3,6 +3,9 @@
 @using System.Globalization
 @{
     ViewData["Title"] = "Chi tiết sản phẩm";
+    ViewData["HeroBadge"] = "Thao tác quản trị";
+    ViewData["HeroTitle"] = "Cập nhật thông tin sản phẩm";
+    ViewData["HeroSubtitle"] = "Chỉnh sửa hình ảnh, mô tả và giá bán trong cùng hệ giao diện với website hiện tại.";
     // Giả sử giá trị là decimal hoặc int
     decimal price = 50000; 
     var formattedPrice = string.Format(new CultureInfo("vi-VN"), "{0:N0} ₫", price);
@@ -10,38 +13,8 @@
 }
 
 <link rel="stylesheet" href="~/css/productdetail.css" />
-<link rel="stylesheet" href="~/css/site.css" />
-
-<!-- 🔥 Banner -->
-<div class="banner">
-    <img id="banner-img" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200">
-</div>
-
-<!-- Navbar -->
-<div class="navbar">
-    <div class="left">
-        <a asp-page="/Index">Trang chủ</a>
-        <a href="#">Giới thiệu</a>
-        <a href="#">Món ăn đề xuất</a>
-    </div>
-    <div class="right">
-            @{
-                var token = HttpContext.Request.Cookies["AuthToken"];
-                var user = HttpContext.Request.Cookies["UserName"];
-            }
-
-            @if (!string.IsNullOrEmpty(token))
-            {
-                <span class="greeting">Xin chào, @user</span>
-                <a asp-page="/Logout">Đăng xuất</a>
-            }
-            else
-            {
-                <a asp-page="/Signin">Đăng nhập</a>
-                <a asp-page="/Signup">Đăng ký</a>
-            }
-        </div>
-</div>
+<partial name="_SiteHeader" />
+<div class="site-shell-main site-shell-main--wide">
 <div class="back-nav-wrapper">
     <div class="content-limit">
         <a asp-page="/AdminPage" class="back-to-admin">
@@ -99,21 +72,8 @@
     </div>
     </form>
 </div>
-
-<!-- 🔥 Footer -->
-<div class="footer">
-    <div class="left">
-        <h3>Đom Đóm nhỏ HCMUE</h3>
-        <p>SĐT: 0999999999</p>
-        <p>Địa chỉ: Trường ĐH Sư phạm TP.HCM</p>
-    </div>
-
-    <div class="right">
-        <iframe 
-            src="https://www.google.com/maps?q=Đại học Sư phạm TP.HCM&output=embed">
-        </iframe>
-    </div>
 </div>
+<partial name="_SiteFooter" />
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
