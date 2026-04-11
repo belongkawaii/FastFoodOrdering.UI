@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // DÙNG result.success ĐỂ KIỂM TRA
                 if (result.success) {
                     alert("Đăng ký thành công!");
-                    window.location.href = "/Index";
+                    window.location.href = "/Signin";
                 } else {
                     errorMessage.textContent = result.message || "Mã OTP sai hoặc đã hết hạn!";
                     errorMessage.classList.remove("hidden");

@@ -35,7 +35,13 @@
 
             <div class="form-group">
                 <label>Số điện thoại</label>
-                <input asp-for="Order.Phone" required />
+                <input asp-for="Order.Phone"
+                       required
+                       inputmode="numeric"
+                       autocomplete="tel"
+                       maxlength="13"
+                       placeholder="Ví dụ: 0901 234 567" />
+                <small class="field-hint">Nhập số điện thoại liên hệ để cửa hàng xác nhận đơn hàng.</small>
             </div>
 
             <div class="form-group">
@@ -118,6 +124,8 @@
     }
 </div>
 
+<script src="~/js/checkout.js" asp-append-version="true"></script>
+<script src="~/js/checkout-form.js" asp-append-version="true"></script>
 <script>
     function toggleQR(show) {
         const qrSection = document.getElementById('qr-section');

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Text;
 using System.Text.Json;
 using System.Net.Http.Headers;
+using System.Text.RegularExpressions;
 
 namespace ShopWeb.Pages
 {
@@ -63,6 +64,7 @@ namespace ShopWeb.Pages
         public async Task<IActionResult> OnPostAsync()
         {
             AttachToken();
+            Order.Phone = NormalizePhoneNumber(Order.Phone);
 
             // AC2: VALIDATE CƠ BẢN
             if (string.IsNullOrEmpty(Order.FullName) ||
@@ -71,6 +73,13 @@ namespace ShopWeb.Pages
             {
                 ErrorMessage = "❌ Vui lòng nhập đầy đủ thông tin giao hàng!";
                 await OnGetAsync(); // Load lại giỏ hàng để hiển thị
+                return Page();
+            }
+
+            if (!Regex.IsMatch(Order.Phone, @"^\d{10,11}$"))
+            {
+                ErrorMessage = "❌ Số điện thoại phải gồm 10 đến 11 chữ số hợp lệ.";
+                await OnGetAsync();
                 return Page();
             }
 
@@ -92,6 +101,16 @@ namespace ShopWeb.Pages
             }
 
             return Page();
+        }
+
+        private static string NormalizePhoneNumber(string? phone)
+        {
+            if (string.IsNullOrWhiteSpace(phone))
+            {
+                return string.Empty;
+            }
+
+            return Regex.Replace(phone, @"\D", string.Empty);
         }
     }
 

@@ -1,0 +1,176 @@
+/* Nền xanh dương cho toàn bộ container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    background-color: #007bff; /* Màu xanh dương chủ đạo */
+    min-height: 80vh;
+}
+/* Khối bao quanh để căn lề cho nút */
+.back-nav-wrapper {
+    background-color: #f8f9fa; /* Màu nền xám nhạt cho thanh điều hướng phụ */
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.content-limit {
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Cập nhật lại class back-to-admin */
+.back-to-admin {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #007bff; /* Đổi sang màu xanh để nổi bật trên nền sáng */
+    background-color: transparent;
+    padding: 8px 0;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.back-to-admin:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+/* Khung trắng chứa nội dung chính */
+.product-box {
+    width: 900px;
+    background: white; /* Nền trắng như bạn muốn */
+    padding: 30px;
+    display: flex;
+    gap: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* Chỉ ảnh hưởng đến cột bên trái TRONG product-box */
+.product-box .left {
+    width: 40%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-box .left img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #eee;
+}
+
+/* Chỉ ảnh hưởng đến cột bên phải TRONG product-box */
+.product-box .right {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Tạo khoảng cách giữa các phần tử từ trên xuống */
+}
+
+.product-box .right label {
+    font-weight: bold;
+    margin-top: 10px;
+    color: #333;
+}
+
+.product-box .right input,
+.product-box .right select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Nút lưu */
+.save-btn {
+    margin-top: 20px;
+    padding: 12px;
+    background: #ff5722;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Container bao quanh input và ký hiệu */
+.price-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.price-input-wrapper input {
+    width: 100%;
+    padding-right: 40px !important; /* Chừa chỗ cho ký hiệu ₫ */
+}
+
+.currency-symbol {
+    position: absolute;
+    right: 15px;
+    color: #888;
+    font-weight: bold;
+    pointer-events: none; /* Để không cản trở khi click vào input */
+}
+
+/* Định dạng lại màu sắc cho giống style bạn đã có */
+.product-price {
+    color: #ee4d2d; /* Màu cam đỏ Shopee */
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Media Query cho thiết bị di động (dưới 768px) */
+@media (max-width: 768px) {
+    /* Cho phép container co giãn theo nội dung */
+    .container {
+        padding: 20px 10px;
+        min-height: auto;
+    }
+
+    /* Chuyển từ hàng ngang sang hàng dọc */
+    .product-box {
+        width: 100%; /* Chiếm hết chiều rộng màn hình */
+        flex-direction: column; 
+        gap: 20px;
+        padding: 20px;
+    }
+
+    /* Cột trái (ảnh) và cột phải (thông tin) chiếm 100% width */
+    .product-box .left, 
+    .product-box .right {
+        width: 100%;
+    }
+
+    /* Điều chỉnh ảnh sản phẩm không quá cao trên mobile */
+    .product-box .left img {
+        height: 250px;
+    }
+
+    /* Đưa nút "Quay về" về vị trí tương đối để không đè lên nội dung */
+    .back-to-admin {
+        position: static; 
+        display: inline-block;
+        margin-bottom: 15px;
+    }
+
+    /* Tăng kích thước các ô nhập liệu để dễ bấm bằng tay */
+    .product-box .right input, 
+    .product-box .right textarea {
+        font-size: 16px; /* Tránh iOS tự động zoom khi focus */
+        padding: 12px;
+    }
+
+    .save-btn {
+        width: 100%; /* Nút bấm to, dễ thao tác */
+        padding: 15px;
+    }
+
+    .content-limit {
+        text-align: center; /* Ra giữa trên điện thoại cho dễ bấm */
+    }
+}

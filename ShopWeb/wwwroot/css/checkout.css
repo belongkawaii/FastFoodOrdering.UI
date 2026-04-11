@@ -47,10 +47,18 @@
         font-size: 14px;
     }
 
-        .form-group input:focus, .form-group textarea:focus {
-            border-color: #ee4d2d;
-            outline: none;
+    .form-group input:focus, .form-group textarea:focus {
+        border-color: #ee4d2d;
+        outline: none;
         }
+
+.field-hint {
+    display: block;
+    margin-top: 6px;
+    color: #7a7a7a;
+    font-size: 13px;
+    line-height: 1.4;
+}
 
 /* Bảng giỏ hàng */
 .cart-table {
