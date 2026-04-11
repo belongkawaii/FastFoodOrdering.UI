@@ -13,10 +13,13 @@ namespace ShopWeb.Pages
             // 2. Xóa tên hiển thị
             Response.Cookies.Delete("UserName");
 
-            // 3. (Tùy chọn) Gửi kèm một thông báo ngọt ngào
+            // 3. Xóa quyền người dùng
+            Response.Cookies.Delete("UserRole");
+
+            // 4. (Tùy chọn) Gửi kèm một thông báo ngọt ngào
             TempData["SuccessMsg"] = "Bạn đã đăng xuất thành công. Hẹn gặp lại!";
 
-            // 4. Lập tức chuyển hướng về trang chủ
+            // 5. Lập tức chuyển hướng về trang chủ
             return RedirectToPage("/Index");
         }
     }

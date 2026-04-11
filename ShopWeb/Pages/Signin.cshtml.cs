@@ -74,6 +74,10 @@ namespace ShopWeb.Pages
                     Expires = DateTimeOffset.UtcNow.AddHours(3)
                 });
                 Response.Cookies.Append("UserName", result.fullName);
+                Response.Cookies.Append("UserRole", result.Role.ToString(), new CookieOptions {
+                    HttpOnly = true,
+                    Expires = DateTimeOffset.UtcNow.AddHours(3)
+                });
 
                 // 2. Kiểm tra Role để điều hướng
                 if (result.Role == 0) 

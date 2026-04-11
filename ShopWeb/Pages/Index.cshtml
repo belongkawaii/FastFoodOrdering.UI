@@ -2,110 +2,170 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Trang chủ";
+    var token = HttpContext.Request.Cookies["AuthToken"];
+    var user = HttpContext.Request.Cookies["UserName"];
+    var role = HttpContext.Request.Cookies["UserRole"];
+    var isAdmin = !string.IsNullOrEmpty(token) && role == "0";
 }
 
-<link rel="stylesheet" href="~/css/site.css">
+<link rel="stylesheet" href="~/css/index.css" asp-append-version="true">
 
-<!-- 🔥 Banner -->
-<div class="banner">
-    <img id="banner-img" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200">
-</div>
-
-<!-- 🔥 Navbar -->
-<div class="navbar">
-    @{
-        var token = HttpContext.Request.Cookies["AuthToken"];
-        var user = HttpContext.Request.Cookies["UserName"];
-    }
-
-    <div class="left">
-        <a asp-page="/Index">Trang chủ</a>
-        <a href="/ComingSoon">Giới thiệu</a>
-        <a href="/ComingSoon">Món ăn đề xuất</a>
-
-        @if (!string.IsNullOrEmpty(token))
-        {
-            <a asp-page="/Cart" class="cart">
-                🛒 Giỏ hàng <span id="cart-count">@(Model.Carts?.TotalQuantity ?? 0)</span>
-            </a>
-            <a asp-page="/OrderHistory">Lịch sử mua hàng</a>
-        }
-    </div>
-
-    <div class="right">
-        @if (!string.IsNullOrEmpty(token))
-        {
-            <span class="greeting">Xin chào, @user</span>
-            <a asp-page="/Logout">Đăng xuất</a>
-        }
-        else
-        {
-            <a asp-page="/Signin">Đăng nhập</a>
-            <a asp-page="/Signup">Đăng ký</a>
-        }
-    </div>
-</div>
-
-            
-
-
-<!-- 🔥 Main layout -->
-<div class="container">
-
-    <!-- Sidebar trái -->
-    <div class="sidebar">
-        <h3>Món hot 🔥</h3>
-        <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=300">
-        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=300">
-    </div>
-
-    <!-- 🔥 Product -->
-    <div class="products">
-    @foreach (var p in Model.Products)
-    {
-         string imageUrl = "https://fastfoodorderingsystem-gaeka7bbhncrhnhp.southeastasia-01.azurewebsites.net" + p.imageUrl;
-        <div class="product">
-            <img src="@imageUrl">
-            <h4 class="product-name">
-                <span>@p.name</span>
-            </h4>
-            <div class="product-price">
-            <span class="amount">@p.price.ToString("0.00")</span>
-            <span class="currency">VND</span>
+<div class="home-page">
+    <section class="hero-banner">
+        <img id="banner-img" src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1200" alt="Món ăn nổi bật">
+        <div class="hero-overlay">
+            <div class="hero-copy">
+                <span class="hero-badge">Fast food giao nhanh</span>
+                @* <h1>Chọn món dễ hơn trên mobile</h1>
+                <p>Thiết kế ưu tiên thao tác nhanh, hình ảnh rõ và nút gọi hành động dễ bấm trên mọi kích thước màn hình.</p> *@
             </div>
-            <form method="post">
-                <button type="submit" asp-page-handler="AddItem">Thêm vào giỏ hàng</button>
-                <input type="hidden" name="productId" value="@p.id" />
-            </form>
         </div>
-        }
+    </section>
+
+    <nav class="home-navbar" aria-label="Điều hướng chính">
+        <div class="home-navbar__top">
+            <a asp-page="/Index" class="brand-mark">Đom Đóm nhỏ HCMUE</a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="home-nav-links">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span class="visually-hidden">Mở menu</span>
+            </button>
+        </div>
+
+        <div class="home-navbar__menu" id="home-nav-links">
+            <div class="nav-group">
+                <a asp-page="/Index">Trang chủ</a>
+                <a href="/ComingSoon">Giới thiệu</a>
+                <a href="/ComingSoon">Món ăn đề xuất</a>
+
+                @if (!isAdmin && !string.IsNullOrEmpty(token))
+                {
+                    <a asp-page="/OrderHistory">Lịch sử mua hàng</a>
+                }
+            </div>
+
+            <div class="nav-group nav-group--account">
+                @if (!string.IsNullOrEmpty(token))
+                {
+                    @if (isAdmin)
+                    {
+                        <a asp-page="/AdminPage" class="nav-pill">
+                            <span>Quản lí</span>
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-page="/Cart" class="nav-pill nav-pill--cart">
+                            <span>Giỏ hàng</span>
+                            <span class="cart-count" id="cart-count">@(Model.Carts?.TotalQuantity ?? 0)</span>
+                        </a>
+                    }
+                    <span class="greeting">Xin chào, @user</span>
+                    <a asp-page="/Logout" class="nav-pill nav-pill--ghost">Đăng xuất</a>
+                }
+                else
+                {
+                    <a asp-page="/Signin" class="nav-pill nav-pill--ghost">Đăng nhập</a>
+                    <a asp-page="/Signup" class="nav-pill">Đăng ký</a>
+                }
+            </div>
+        </div>
+    </nav>
+
+    @* <section class="home-summary" aria-label="Điểm nổi bật">
+        <article class="summary-card">
+            <strong>Menu rõ ràng</strong>
+            <p>Ưu tiên nội dung chính và giảm nhiễu để người dùng thấy món ăn ngay.</p>
+        </article>
+        <article class="summary-card">
+            <strong>Nút chạm dễ</strong>
+            <p>Tăng kích thước CTA để thêm món vào giỏ nhanh hơn trên điện thoại.</p>
+        </article>
+        <article class="summary-card">
+            <strong>Hiển thị gọn</strong>
+            <p>Bố cục tự co giãn tốt từ màn hình nhỏ đến tablet mà không tràn ngang.</p>
+        </article>
+    </section> *@
+
+    <div class="home-layout">
+        <aside class="promo-panel" aria-label="Món hot">
+            <div class="panel-card">
+                <div class="panel-heading">
+                    <h2>Món hot</h2>
+                    <span>Ưa chuộng hôm nay</span>
+                </div>
+                <div class="promo-stack">
+                    <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=600" alt="Burger nổi bật">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600" alt="Pizza được yêu thích">
+                </div>
+            </div>
+        </aside>
+
+        <section class="products-section" aria-labelledby="products-heading">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Danh sách món ăn</p>
+                    <h2 id="products-heading">Chọn món phù hợp cho bữa ăn của bạn</h2>
+                </div>
+                @* <p class="section-note">Giao diện mobile ưu tiên ảnh rõ, giá dễ đọc và khoảng chạm đủ lớn.</p> *@
+            </div>
+
+            <div class="products-grid">
+                @foreach (var p in Model.Products)
+                {
+                    string imageUrl = "https://fastfoodorderingsystem-gaeka7bbhncrhnhp.southeastasia-01.azurewebsites.net" + p.imageUrl;
+                    <article class="product-card">
+                        <img src="@imageUrl" alt="@p.name">
+                        <div class="product-card__body">
+                            <h3 class="product-name">
+                                <span>@p.name</span>
+                            </h3>
+                            <div class="product-price" aria-label="Giá món ăn">
+                                <span class="amount">@p.price.ToString("0.00")</span>
+                                <span class="currency">VND</span>
+                            </div>
+                            <form method="post" class="product-form">
+                                <button type="submit" asp-page-handler="AddItem">Thêm vào giỏ hàng</button>
+                                <input type="hidden" name="productId" value="@p.id" />
+                            </form>
+                        </div>
+                    </article>
+                }
+            </div>
+        </section>
+
+        <aside class="promo-panel" aria-label="Quảng cáo">
+            <div class="panel-card">
+                <div class="panel-heading">
+                    <h2>Ưu đãi</h2>
+                    <span>Khuyến mãi theo mùa</span>
+                </div>
+                <div class="promo-stack">
+                    <img src="https://images.unsplash.com/photo-1506089676908-3592f7389d4d?w=600" alt="Combo thức ăn nhanh">
+                    <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600" alt="Món ăn khuyến mãi">
+                </div>
+            </div>
+        </aside>
     </div>
 
-    <!-- Sidebar phải -->
-    <div class="sidebar">
-        <h3>Quảng cáo</h3>
-        <img src="https://images.unsplash.com/photo-1506089676908-3592f7389d4d?w=300">
-        <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=300">
-    </div>
+    <footer class="home-footer">
+        <div class="footer-info">
+            <h3>Đom Đóm nhỏ HCMUE</h3>
+            <p>SĐT: 0999999999</p>
+            <p>Địa chỉ: Trường ĐH Sư phạm TP.HCM</p>
+        </div>
 
+        <div class="footer-map">
+            <iframe
+                title="Bản đồ Đại học Sư phạm TP.HCM"
+                src="https://www.google.com/maps?q=Đại học Sư phạm TP.HCM&output=embed">
+            </iframe>
+        </div>
+    </footer>
 </div>
 
-<!-- 🔥 Footer -->
-<div class="footer">
-    <div class="left">
-        <h3>Đom Đóm nhỏ HCMUE</h3>
-        <p>SĐT: 0999999999</p>
-        <p>Địa chỉ: Trường ĐH Sư phạm TP.HCM</p>
-    </div>
-
-    <div class="right">
-        <iframe 
-            src="https://www.google.com/maps?q=Đại học Sư phạm TP.HCM&output=embed">
-        </iframe>
-    </div>
-</div>
-
-<script src="~/js/site.js"></script>
+<script src="~/js/index.js" asp-append-version="true"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
