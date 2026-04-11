@@ -4748,24 +4748,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\LONG\\.nuget\\packages\\": {}
+    "C:\\Users\\HP\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\HOCTAP\\HocTapReal\\Nam2-2025\\HK2\\Agile\\FastFoodOrdering\\FastFoodOrdering.UI\\ShopWeb\\ShopWeb.csproj",
+      "projectUniqueName": "D:\\Application\\Project\\FastFoodOrdering.UI\\ShopWeb\\ShopWeb.csproj",
       "projectName": "ShopWeb",
-      "projectPath": "D:\\HOCTAP\\HocTapReal\\Nam2-2025\\HK2\\Agile\\FastFoodOrdering\\FastFoodOrdering.UI\\ShopWeb\\ShopWeb.csproj",
-      "packagesPath": "C:\\Users\\LONG\\.nuget\\packages\\",
-      "outputPath": "D:\\HOCTAP\\HocTapReal\\Nam2-2025\\HK2\\Agile\\FastFoodOrdering\\FastFoodOrdering.UI\\ShopWeb\\obj\\",
+      "projectPath": "D:\\Application\\Project\\FastFoodOrdering.UI\\ShopWeb\\ShopWeb.csproj",
+      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+      "outputPath": "D:\\Application\\Project\\FastFoodOrdering.UI\\ShopWeb\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\LONG\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "D:\\Tech\\Enviroment\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -4784,7 +4792,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.300"
+      "SdkAnalysisLevel": "10.0.100"
     },
     "frameworks": {
       "net9.0": {
@@ -4826,6 +4834,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[9.0.11, 9.0.11]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[9.0.11, 9.0.11]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[9.0.11, 9.0.11]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[9.0.11, 9.0.11]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -4834,7 +4860,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.312/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "D:\\Tech\\Enviroment\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

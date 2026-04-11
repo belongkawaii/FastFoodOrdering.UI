@@ -6,6 +6,7 @@
     // Giả sử giá trị là decimal hoặc int
     decimal price = 50000; 
     var formattedPrice = string.Format(new CultureInfo("vi-VN"), "{0:N0} ₫", price);
+    string imgUrl = $"https://fastfoodorderingsystem-gaeka7bbhncrhnhp.southeastasia-01.azurewebsites.net{@Model.Product.imageUrl}";
 }
 
 <link rel="stylesheet" href="~/css/productdetail.css" />
@@ -53,7 +54,7 @@
     <div class="product-box">
         <!-- LEFT: IMAGE -->
         <div class="left">
-            <img id="productImage" src="http://localhost:5014/@Model.Product.imageUrl" />
+            <img id="productImage" src="@imgUrl" />
             <input type="file" name="UploadedImage" id="imageInput" hidden onchange="previewImage(this)" />
             <button type="button" onclick="document.getElementById('imageInput').click()">Thay ảnh</button>
         </div>

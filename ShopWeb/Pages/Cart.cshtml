@@ -68,7 +68,7 @@
             <tbody>
                 @foreach (var item in Model.Carts.items)
                 {
-                    string imageUrl = "http://localhost:5014" + item.product.imageUrl;
+                    string imageUrl = "https://fastfoodorderingsystem-gaeka7bbhncrhnhp.southeastasia-01.azurewebsites.net" + item.product.imageUrl;
                     var total = item.product.price * item.quantity;
 
                     <tr id="row-@item.id">

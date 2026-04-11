@@ -8,7 +8,7 @@ namespace ShopWeb.Pages
     public class ProductDetailModel : PageModel
     {
         private readonly HttpClient _httpClient;
-        private const string BaseApiUrl = "http://localhost:5014/api";
+        private const string BaseApiUrl = "https://fastfoodorderingsystem-gaeka7bbhncrhnhp.southeastasia-01.azurewebsites.net/api";
 
         // Chỉ dùng để hiển thị lên giao diện (Read-only)
         public Product Product { get; set; } = new();

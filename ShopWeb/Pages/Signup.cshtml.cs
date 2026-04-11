@@ -8,7 +8,7 @@ using System.Text.Json;
 public class SignupModel : PageModel
 {
     // Địa chỉ API gốc đang chạy trên cổng 5014
-    private readonly string _apiUrl = "http://localhost:5014/api/Auth";
+    private readonly string _apiUrl = "https://fastfoodorderingsystem-gaeka7bbhncrhnhp.southeastasia-01.azurewebsites.net/api/Auth";
 
     public void OnGet()
     {

@@ -8,7 +8,7 @@ namespace ShopWeb.Pages
     public class AddProductAdminModel : PageModel
     {
         private readonly HttpClient _httpClient;
-        private const string BaseApiUrl = "http://localhost:5014/api";
+        private const string BaseApiUrl = "https://fastfoodorderingsystem-gaeka7bbhncrhnhp.southeastasia-01.azurewebsites.net/api";
 
         // Khởi tạo đối tượng Product trống để hiển thị form sạch
         public Product Product { get; set; } = new();

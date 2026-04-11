@@ -26,7 +26,7 @@ namespace ShopWeb.Pages
             try 
             {
                 _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-                var response = await _httpClient.GetAsync("http://localhost:5014/api/products");
+                var response = await _httpClient.GetAsync("https://fastfoodorderingsystem-gaeka7bbhncrhnhp.southeastasia-01.azurewebsites.net/api/products");
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -63,7 +63,7 @@ namespace ShopWeb.Pages
                     _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                     
                     // Gọi tới API backend của bạn
-                    var response = await _httpClient.DeleteAsync($"http://localhost:5014/api/admin/products/{id}");
+                    var response = await _httpClient.DeleteAsync($"https://fastfoodorderingsystem-gaeka7bbhncrhnhp.southeastasia-01.azurewebsites.net/api/admin/products/{id}");
 
                     if (response.IsSuccessStatusCode)
                     {

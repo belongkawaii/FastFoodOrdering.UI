@@ -6,7 +6,7 @@ using System.Text.Json;
 [IgnoreAntiforgeryToken]
 public class ForgotPasswordModel : PageModel
 {
-    private readonly string _apiUrl = "http://localhost:5014/api/Auth";
+    private readonly string _apiUrl = "https://fastfoodorderingsystem-gaeka7bbhncrhnhp.southeastasia-01.azurewebsites.net/api/Auth";
 
     public void OnGet()
     {

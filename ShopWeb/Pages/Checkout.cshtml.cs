@@ -10,7 +10,7 @@ namespace ShopWeb.Pages
     {
         private readonly HttpClient _httpClient;
        
-        private readonly string _apiBaseUrl = "http://localhost:5014/api";
+        private readonly string _apiBaseUrl = "https://fastfoodorderingsystem-gaeka7bbhncrhnhp.southeastasia-01.azurewebsites.net/api";
 
         public CheckoutModel(IHttpClientFactory factory)
         {

@@ -31,7 +31,7 @@ namespace ShopWeb.Pages
                     _httpClient.DefaultRequestHeaders.Authorization =
                         new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
-                    var cartResponse = await _httpClient.GetAsync("http://localhost:5014/api/cart");
+                    var cartResponse = await _httpClient.GetAsync("https://fastfoodorderingsystem-gaeka7bbhncrhnhp.southeastasia-01.azurewebsites.net/api/cart");
 
                     if (cartResponse.IsSuccessStatusCode)
                     {
@@ -57,7 +57,7 @@ namespace ShopWeb.Pages
 
             try
             {
-                var response = await _httpClient.PostAsJsonAsync("http://localhost:5014/api/auth/login", new
+                var response = await _httpClient.PostAsJsonAsync("https://fastfoodorderingsystem-gaeka7bbhncrhnhp.southeastasia-01.azurewebsites.net/api/auth/login", new
                 {
                     email = Email,
                     password = Password

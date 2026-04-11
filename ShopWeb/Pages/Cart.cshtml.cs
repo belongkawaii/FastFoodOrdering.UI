@@ -34,7 +34,7 @@ namespace ShopWeb.Pages
             AttachToken();
             try
             {
-                var response = await _httpClient.GetAsync("http://localhost:5014/api/cart");
+                var response = await _httpClient.GetAsync("https://fastfoodorderingsystem-gaeka7bbhncrhnhp.southeastasia-01.azurewebsites.net/api/cart");
                 if (response.IsSuccessStatusCode)
                 {
                     Carts = await response.Content.ReadFromJsonAsync<Cart>() ?? new Cart();
@@ -47,7 +47,7 @@ namespace ShopWeb.Pages
         public async Task<JsonResult> OnPostIncreaseAsync(int itemId, int productId)
         {
             AttachToken();
-            var res = await _httpClient.PutAsync($"http://localhost:5014/api/cart/increase/{itemId}", null);
+            var res = await _httpClient.PutAsync($"https://fastfoodorderingsystem-gaeka7bbhncrhnhp.southeastasia-01.azurewebsites.net/api/cart/increase/{itemId}", null);
             return await GetUpdatedCartData(itemId, res.IsSuccessStatusCode);
         }
 
@@ -55,7 +55,7 @@ namespace ShopWeb.Pages
         public async Task<JsonResult> OnPostDecreaseAsync(int itemId, int productId)
         {
             AttachToken();
-            var res = await _httpClient.PutAsync($"http://localhost:5014/api/cart/decrease/{itemId}", null);
+            var res = await _httpClient.PutAsync($"https://fastfoodorderingsystem-gaeka7bbhncrhnhp.southeastasia-01.azurewebsites.net/api/cart/decrease/{itemId}", null);
             return await GetUpdatedCartData(itemId, res.IsSuccessStatusCode);
         }
 
@@ -63,7 +63,7 @@ namespace ShopWeb.Pages
         public async Task<JsonResult> OnPostRemoveAsync(int itemId, int productId)
         {
             AttachToken();
-            var res = await _httpClient.DeleteAsync($"http://localhost:5014/api/cart/remove/{itemId}");
+            var res = await _httpClient.DeleteAsync($"https://fastfoodorderingsystem-gaeka7bbhncrhnhp.southeastasia-01.azurewebsites.net/api/cart/remove/{itemId}");
             return await GetUpdatedCartData(itemId, res.IsSuccessStatusCode);
         }
 
@@ -73,7 +73,7 @@ namespace ShopWeb.Pages
             if (!isSuccess) return new JsonResult(new { success = false, message = "Lỗi khi cập nhật!" });
 
             // Gọi API lấy lại toàn bộ giỏ hàng mới nhất
-            var cartResponse = await _httpClient.GetAsync("http://localhost:5014/api/cart");
+            var cartResponse = await _httpClient.GetAsync("https://fastfoodorderingsystem-gaeka7bbhncrhnhp.southeastasia-01.azurewebsites.net/api/cart");
             if (cartResponse.IsSuccessStatusCode)
             {
                 var cart = await cartResponse.Content.ReadFromJsonAsync<Cart>();

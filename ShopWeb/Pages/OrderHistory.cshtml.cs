@@ -32,7 +32,7 @@ namespace ShopWeb.Pages
             AttachToken();
             try
             {
-                var response = await _httpClient.GetAsync("http://localhost:5014/api/orders/history");
+                var response = await _httpClient.GetAsync("https://fastfoodorderingsystem-gaeka7bbhncrhnhp.southeastasia-01.azurewebsites.net/api/orders/history");
                 if (response.IsSuccessStatusCode)
                 {
                     Orders = await response.Content.ReadFromJsonAsync<List<OrderDto>>() ?? new List<OrderDto>();
@@ -47,7 +47,7 @@ namespace ShopWeb.Pages
         public async Task<JsonResult> OnPostCancelAsync(int orderId)
         {
             AttachToken();
-            var response = await _httpClient.PutAsync($"http://localhost:5014/api/orders/{orderId}/cancel", null);
+            var response = await _httpClient.PutAsync($"https://fastfoodorderingsystem-gaeka7bbhncrhnhp.southeastasia-01.azurewebsites.net/api/orders/{orderId}/cancel", null);
 
             if (response.IsSuccessStatusCode)
             {
