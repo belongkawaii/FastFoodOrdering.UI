@@ -1,13 +1,4 @@
-﻿
-const email = document.getElementById("email");
-const password = document.getElementById("password");
-const confirmPassword = document.getElementById("confirmPassword");
-const phoneNumber = document.getElementById("phone");
-const fullName = document.getElementById("fullName");
-const form = document.getElementById("form-register");
-const errorMessage = document.getElementById("error-message");
-
-document.addEventListener("DOMContentLoaded", () => {
+﻿document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("form-register");
     const errorMessage = document.getElementById("error-message");
     const submitBtn = document.getElementById("submitBtn");
@@ -32,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const confirmPassword = document.getElementById("confirmPassword")?.value;
 
         // ==========================================
-        // 2. BỘ KIỂM TRA DỮ LIỆU (VALIDATION CHẶT CHẼ)
+        // 2. BỘ KIỂM TRA DỮ LIỆU (VALIDATION CƠ BẢN TẠI JS)
         // ==========================================
 
         // Kiểm tra rỗng tất cả các trường
@@ -42,9 +33,9 @@ document.addEventListener("DOMContentLoaded", () => {
             return; // Chặn không cho gọi API
         }
 
-        // Kiểm tra mật khẩu
+        // Kiểm tra mật khẩu khớp nhau
         if (password !== confirmPassword) {
-            errorMessage.textContent = "Mật khẩu không khớp!";
+            errorMessage.textContent = "Mật khẩu xác nhận không khớp!";
             errorMessage.classList.remove("hidden");
             return;
         }
@@ -60,33 +51,44 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // ==========================================
-        // BƯỚC 1: NẾU CHƯA GỬI MAIL -> GỌI API SEND OTP
+        // BƯỚC 1: NẾU CHƯA GỬI MAIL -> GỌI API SEND OTP (CÓ KÈM PASS VÀ PHONE ĐỂ C# KIỂM TRA)
         // ==========================================
         if (!isOtpSent) {
-            submitBtn.textContent = "Đang gửi email...";
+            submitBtn.textContent = "Đang kiểm tra và gửi email...";
             submitBtn.disabled = true;
 
             try {
                 const res = await fetch("?handler=SendOtp", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ email: email })
+                    // 🔥 SỬA TẠI ĐÂY: Gửi cả 3 biến email, password, phone lên cho class SendOtpReq của C#
+                    body: JSON.stringify({
+                        email: email,
+                        password: password,
+                        phone: phone
+                    })
                 });
 
                 const result = await res.json();
 
-                // DÙNG result.success ĐỂ KIỂM TRA, KHÔNG DÙNG res.ok NỮA
                 if (result.success) {
                     isOtpSent = true;
 
                     // Hiệu ứng giao diện
                     otpInput.classList.remove("hidden");
                     emailInput.readOnly = true;
+
+                    // Khóa các ô khác lại để người dùng không sửa sau khi đã gửi OTP
+                    document.getElementById("phone").readOnly = true;
+                    document.getElementById("password").readOnly = true;
+                    document.getElementById("confirmPassword").readOnly = true;
+
                     submitBtn.textContent = "Hoàn tất Đăng ký";
                     submitBtn.style.backgroundColor = "#28a745";
 
                     alert("Mã OTP đã được gửi! Vui lòng kiểm tra email.");
                 } else {
+                    // Nếu C# kiểm tra Regex thấy lỗi (vd: nhập "1"), nó sẽ trả về message lỗi ở đây
                     errorMessage.textContent = result.message || "Email này đã tồn tại hoặc có lỗi.";
                     errorMessage.classList.remove("hidden");
                 }
@@ -123,10 +125,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 const result = await res.json();
 
-                // DÙNG result.success ĐỂ KIỂM TRA
                 if (result.success) {
                     alert("Đăng ký thành công!");
-                    window.location.href = "/Signin";
+                    window.location.href = "/Signin"; // Đổi link này nếu trang đăng nhập của bạn tên khác
                 } else {
                     errorMessage.textContent = result.message || "Mã OTP sai hoặc đã hết hạn!";
                     errorMessage.classList.remove("hidden");
@@ -140,4 +141,14 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     });
-}); 
+});
+function togglePassword(inputId, icon) {
+    const input = document.getElementById(inputId);
+    if (input.type === "password") {
+        input.type = "text"; // Biến thành text để nhìn thấy chữ
+        icon.textContent = "🙈"; // Đổi icon thành nhắm mắt
+    } else {
+        input.type = "password"; // Trả lại thành dấu chấm
+        icon.textContent = "👁️"; // Đổi icon thành mở mắt
+    }
+}

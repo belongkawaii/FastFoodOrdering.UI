@@ -211,3 +211,107 @@ h2 {
             height: 200px;
         }
 }
+
+/* ====================================================
+   CSS RESPONSIVE - GIAO DIỆN ĐIỆN THOẠI / TABLET NHỎ
+   ==================================================== */
+@media screen and (max-width: 768px) {
+    /* 1. Sửa Navbar: Cho các link rớt dòng gọn gàng */
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 10px;
+    }
+
+        .navbar .left, .navbar .right {
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+    /* 2. Biến Bảng (Table) thành dạng Thẻ (Card) */
+    .cart-table,
+    .cart-table tbody,
+    .cart-table tr,
+    .cart-table td {
+        display: block;
+        width: 100%;
+    }
+
+        /* Ẩn cái thanh tiêu đề ngang đi (Ảnh, Tên, Giá...) */
+        .cart-table thead {
+            display: none;
+        }
+
+        /* Đóng khung từng món ăn như một tấm thẻ */
+        .cart-table tr {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            background-color: #fff;
+        }
+
+        /* Sắp xếp nội dung bên trong thẻ td: Tiêu đề bên trái, Dữ liệu bên phải */
+        .cart-table td {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px dashed #eee;
+            padding: 10px 0;
+            text-align: right;
+        }
+
+            .cart-table td:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+
+            /* Lấy chữ trong data-label in ra màn hình làm tiêu đề */
+            .cart-table td::before {
+                content: attr(data-label);
+                font-weight: bold;
+                color: #555;
+                text-align: left;
+            }
+
+    /* Chỉnh lại nút Tăng/Giảm và Ảnh cho cân đối */
+    .cart-img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .quantity-box {
+        margin: 0; /* Gỡ margin nếu có */
+    }
+
+    /* 3. Phần Tổng tiền & Thanh toán */
+    .cart-summary {
+        text-align: center;
+        margin-top: 20px;
+        padding: 15px;
+    }
+
+        .cart-summary h3, .cart-summary h4 {
+            margin-bottom: 15px;
+        }
+
+    .checkout-btn {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* 4. Sắp xếp lại Footer (Bản đồ dời xuống dưới) */
+    .footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+        .footer .right iframe {
+            width: 100%;
+            height: 250px;
+        }
+}

@@ -62,7 +62,7 @@
                     <th>Giá</th>
                     <th>Số lượng</th>
                     <th>Thành tiền</th>
-                    <th></th>
+                    <th>Hành động</th>
                 </tr>
             </thead>
             <tbody>
@@ -72,11 +72,11 @@
                     var total = item.product.price * item.quantity;
 
                     <tr id="row-@item.id">
-                        <td><img class="cart-img" src="@imageUrl" /></td>
-                        <td>@item.product.name</td>
-                        <td class="price">@item.product.price.ToString("N0") đ</td>
+                        <td data-label="Ảnh"><img class="cart-img" src="@imageUrl" /></td>
+                        <td data-label="Tên">@item.product.name</td>
+                        <td data-label="Giá" class="price">@item.product.price.ToString("N0") đ</td>
 
-                        <td>
+                        <td data-label="Số lượng">
                             <div class="quantity-box">
                                 <button type="button" class="quantity-btn" onclick="updateItem('Decrease', @item.id, @item.productId)">-</button>
                                 <span id="qty-@item.id">@item.quantity</span>
@@ -84,11 +84,11 @@
                             </div>
                         </td>
 
-                        <td class="price" id="item-total-@item.id">
+                        <td data-label="Thành tiền" class="price" id="item-total-@item.id">
                             @total.ToString("N0") đ
                         </td>
 
-                        <td>
+                        <td data-label="Hành động">
                             <button type="button" class="remove-btn" onclick="updateItem('Remove', @item.id, @item.productId)">Xóa</button>
                         </td>
                     </tr>

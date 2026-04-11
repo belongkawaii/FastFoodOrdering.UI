@@ -129,6 +129,36 @@ body {
 .hidden {
     display: none !important;
 }
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+    display: none;
+}
+
+/* Canh chỉnh khung chứa mật khẩu */
+.password-wrapper {
+    position: relative;
+    width: 100%; /* Giữ nguyên chiều rộng theo form cũ của bạn */
+    margin-bottom: 15px; /* Khoảng cách giữa các ô */
+}
+
+    /* Chừa khoảng trống bên phải để con mắt không đè lên chữ */
+    .password-wrapper input {
+        width: 100%;
+        padding-right: 40px;
+        margin-bottom: 0; /* Xóa margin cũ nếu có để bọc cho khít */
+    }
+
+/* Định dạng con mắt */
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    user-select: none; /* Tránh bôi đen nhầm con mắt */
+    font-size: 18px;
+    color: #666;
+}
 
 /* =========================
    📱 RESPONSIVE FOR MOBILE
