@@ -6,6 +6,7 @@
     var user = HttpContext.Request.Cookies["UserName"];
     var role = HttpContext.Request.Cookies["UserRole"];
     var isAdmin = !string.IsNullOrEmpty(token) && role == "0";
+    var viVn = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
 }
 
 <link rel="stylesheet" href="~/css/index.css" asp-append-version="true">
@@ -115,6 +116,7 @@
                 @foreach (var p in Model.Products)
                 {
                     string imageUrl = "https://fastfoodorderingsystem-gaeka7bbhncrhnhp.southeastasia-01.azurewebsites.net" + p.imageUrl;
+                    string formattedPrice = p.price.ToString("N0", viVn);
                     <article class="product-card">
                         <img src="@imageUrl" alt="@p.name">
                         <div class="product-card__body">
@@ -122,8 +124,8 @@
                                 <span>@p.name</span>
                             </h3>
                             <div class="product-price" aria-label="Giá món ăn">
-                                <span class="amount">@p.price.ToString("0.00")</span>
-                                <span class="currency">VND</span>
+                                <span class="amount">@formattedPrice</span>
+                                <span class="currency">₫</span>
                             </div>
                             <form method="post" class="product-form">
                                 <button type="submit" asp-page-handler="AddItem">Thêm vào giỏ hàng</button>
@@ -142,7 +144,7 @@
                     <span>Khuyến mãi theo mùa</span>
                 </div>
                 <div class="promo-stack">
-                    <img src="https://images.unsplash.com/photo-1506089676908-3592f7389d4d?w=600" alt="Combo thức ăn nhanh">
+                    <img src="https://www.chuphinhsanpham.vn/wp-content/uploads/2023/04/studio-chuyen-chup-hinh-mon-an-hcm-0003.jpg" alt="Combo thức ăn nhanh">
                     <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600" alt="Món ăn khuyến mãi">
                 </div>
             </div>
