@@ -1,14 +1,7 @@
-D:\Application\Project\FastFoodOrdering.UI\ShopWeb\bin\Debug\net9.0\publish\web.config
 D:\Application\Project\FastFoodOrdering.UI\ShopWeb\bin\Debug\net9.0\appsettings.Development.json
 D:\Application\Project\FastFoodOrdering.UI\ShopWeb\bin\Debug\net9.0\appsettings.json
-D:\Application\Project\FastFoodOrdering.UI\ShopWeb\bin\Debug\net9.0\publish\appsettings.Development.json
-D:\Application\Project\FastFoodOrdering.UI\ShopWeb\bin\Debug\net9.0\publish\appsettings.json
-D:\Application\Project\FastFoodOrdering.UI\ShopWeb\bin\Debug\net9.0\publish\ShopWeb.deps.json
-D:\Application\Project\FastFoodOrdering.UI\ShopWeb\bin\Debug\net9.0\publish\ShopWeb.runtimeconfig.json
-D:\Application\Project\FastFoodOrdering.UI\ShopWeb\bin\Debug\net9.0\publish\ShopWeb.staticwebassets.endpoints.json
 D:\Application\Project\FastFoodOrdering.UI\ShopWeb\bin\Debug\net9.0\ShopWeb.staticwebassets.runtime.json
 D:\Application\Project\FastFoodOrdering.UI\ShopWeb\bin\Debug\net9.0\ShopWeb.staticwebassets.endpoints.json
-D:\Application\Project\FastFoodOrdering.UI\ShopWeb\bin\Debug\net9.0\ShopWeb.exe
 D:\Application\Project\FastFoodOrdering.UI\ShopWeb\bin\Debug\net9.0\ShopWeb.deps.json
 D:\Application\Project\FastFoodOrdering.UI\ShopWeb\bin\Debug\net9.0\ShopWeb.runtimeconfig.json
 D:\Application\Project\FastFoodOrdering.UI\ShopWeb\bin\Debug\net9.0\ShopWeb.dll
@@ -162,11 +155,9 @@ D:\Application\Project\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\r
 D:\Application\Project\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\qtfri4pmfc-{0}-0r4z2w9qib-0r4z2w9qib.gz
 D:\Application\Project\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\8slsocyt8d-{0}-61n19gt1b8-61n19gt1b8.gz
 D:\Application\Project\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\cugjl4r2xd-{0}-xdylx0qmth-xdylx0qmth.gz
-D:\Application\Project\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\327ga2384y-{0}-khbk871lrd-khbk871lrd.gz
 D:\Application\Project\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\ee8q4619ep-{0}-bkwjl7gees-bkwjl7gees.gz
 D:\Application\Project\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\2dqnj11ecu-{0}-eiszy9pjv6-eiszy9pjv6.gz
 D:\Application\Project\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\45bz5d6yzb-{0}-ffyujzej4h-ffyujzej4h.gz
-D:\Application\Project\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\08gbc3tuen-{0}-xyxulj73ym-xyxulj73ym.gz
 D:\Application\Project\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\8576ha4d9v-{0}-xdmunbn0jg-xdmunbn0jg.gz
 D:\Application\Project\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\23n68gahtr-{0}-kbgpo2uxc7-kbgpo2uxc7.gz
 D:\Application\Project\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\in5mssdfr7-{0}-t1cqhe9u97-t1cqhe9u97.gz
@@ -241,3 +232,6 @@ D:\Application\Project\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\refint\ShopW
 D:\Application\Project\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\ShopWeb.pdb
 D:\Application\Project\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\ShopWeb.genruntimeconfig.cache
 D:\Application\Project\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\ref\ShopWeb.dll
+D:\Application\Project\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\327ga2384y-{0}-7a348srqen-7a348srqen.gz
+D:\Application\Project\FastFoodOrdering.UI\ShopWeb\obj\Debug\net9.0\compressed\08gbc3tuen-{0}-9tgk0ja9h8-9tgk0ja9h8.gz
+D:\Application\Project\FastFoodOrdering.UI\ShopWeb\bin\Debug\net9.0\ShopWeb.exe

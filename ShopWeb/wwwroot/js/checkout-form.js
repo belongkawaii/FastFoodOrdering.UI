@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const phoneInput = document.getElementById("Order_Phone");
 
     function formatPhoneNumber(value) {
-        const digits = value.replace(/\D/g, "").slice(0, 11);
+        const digits = value.replace(/\D/g, "").slice(0, 10);
 
         if (digits.length <= 4) {
             return digits;

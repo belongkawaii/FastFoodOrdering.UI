@@ -19,6 +19,7 @@
         const fullName = document.getElementById("fullName")?.value.trim();
         const email = emailInput?.value.trim();
         const phone = document.getElementById("phone")?.value.trim();
+        const normalizedPhone = phone?.replace(/\D/g, "");
         const password = document.getElementById("password")?.value;
         const confirmPassword = document.getElementById("confirmPassword")?.value;
 
@@ -36,6 +37,12 @@
         // Kiểm tra mật khẩu khớp nhau
         if (password !== confirmPassword) {
             errorMessage.textContent = "Mật khẩu xác nhận không khớp!";
+            errorMessage.classList.remove("hidden");
+            return;
+        }
+
+        if (!/^0\d{9}$/.test(normalizedPhone || "")) {
+            errorMessage.textContent = "Số điện thoại phải gồm đúng 10 chữ số và bắt đầu bằng số 0!";
             errorMessage.classList.remove("hidden");
             return;
         }
@@ -65,7 +72,7 @@
                     body: JSON.stringify({
                         email: email,
                         password: password,
-                        phone: phone
+                        phone: normalizedPhone
                     })
                 });
 
@@ -110,7 +117,7 @@
             const data = {
                 fullName: fullName,
                 email: email,
-                phone: phone,
+                phone: normalizedPhone,
                 password: password,
                 confirmPassword: confirmPassword,
                 otpCode: otpInput?.value.trim()

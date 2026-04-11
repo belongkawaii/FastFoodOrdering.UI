@@ -76,9 +76,9 @@ namespace ShopWeb.Pages
                 return Page();
             }
 
-            if (!Regex.IsMatch(Order.Phone, @"^\d{10,11}$"))
+            if (!Regex.IsMatch(Order.Phone, @"^0\d{9}$"))
             {
-                ErrorMessage = "❌ Số điện thoại phải gồm 10 đến 11 chữ số hợp lệ.";
+                ErrorMessage = "❌ Số điện thoại phải gồm đúng 10 chữ số và bắt đầu bằng số 0.";
                 await OnGetAsync();
                 return Page();
             }
