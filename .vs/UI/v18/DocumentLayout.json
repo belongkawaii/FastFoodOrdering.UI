@@ -3,36 +3,8 @@
   "WorkspaceRootPath": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|d:\\hoc_tap\\2025-2026_hk2\\agile\\fastfoodordering.ui\\shopweb\\pages\\cart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|solutionrelative:shopweb\\pages\\cart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|d:\\hoc_tap\\2025-2026_hk2\\agile\\fastfoodordering.ui\\shopweb\\pages\\cart.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|solutionrelative:shopweb\\pages\\cart.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|d:\\hoc_tap\\2025-2026_hk2\\agile\\fastfoodordering.ui\\shopweb\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|solutionrelative:shopweb\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|d:\\hoc_tap\\2025-2026_hk2\\agile\\fastfoodordering.ui\\shopweb\\pages\\checkout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|solutionrelative:shopweb\\pages\\checkout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|d:\\hoc_tap\\2025-2026_hk2\\agile\\fastfoodordering.ui\\shopweb\\pages\\adminpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|solutionrelative:shopweb\\pages\\adminpage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|d:\\hoc_tap\\2025-2026_hk2\\agile\\fastfoodordering.ui\\shopweb\\pages\\orderhistory.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|solutionrelative:shopweb\\pages\\orderhistory.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|d:\\hoc_tap\\2025-2026_hk2\\agile\\fastfoodordering.ui\\shopweb\\pages\\signin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|solutionrelative:shopweb\\pages\\signin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|d:\\hoc_tap\\2025-2026_hk2\\agile\\fastfoodordering.ui\\shopweb\\pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|solutionrelative:shopweb\\pages\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|d:\\hoc_tap\\2025-2026_hk2\\agile\\fastfoodordering.ui\\shopweb\\pages\\forgotpassword.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{15E74A6F-E3D0-94F3-C25A-75C3A8AAB353}|ShopWeb\\ShopWeb.csproj|solutionrelative:shopweb\\pages\\forgotpassword.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,110 +14,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "site.js",
-              "DocumentMoniker": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\wwwroot\\js\\site.js",
-              "RelativeDocumentMoniker": "ShopWeb\\wwwroot\\js\\site.js",
-              "ToolTip": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\wwwroot\\js\\site.js",
-              "RelativeToolTip": "ShopWeb\\wwwroot\\js\\site.js",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2026-04-07T16:55:44.936Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Cart.cshtml.cs",
-              "DocumentMoniker": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\Pages\\Cart.cshtml.cs",
-              "RelativeDocumentMoniker": "ShopWeb\\Pages\\Cart.cshtml.cs",
-              "ToolTip": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\Pages\\Cart.cshtml.cs",
-              "RelativeToolTip": "ShopWeb\\Pages\\Cart.cshtml.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAwFYAAABRAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-07T16:43:06.682Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AdminPage.cshtml",
-              "DocumentMoniker": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\Pages\\AdminPage.cshtml",
-              "RelativeDocumentMoniker": "ShopWeb\\Pages\\AdminPage.cshtml",
-              "ToolTip": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\Pages\\AdminPage.cshtml",
-              "RelativeToolTip": "ShopWeb\\Pages\\AdminPage.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-04-07T16:37:33.267Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Cart.cshtml",
-              "DocumentMoniker": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\Pages\\Cart.cshtml",
-              "RelativeDocumentMoniker": "ShopWeb\\Pages\\Cart.cshtml",
-              "ToolTip": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\Pages\\Cart.cshtml",
-              "RelativeToolTip": "ShopWeb\\Pages\\Cart.cshtml",
-              "ViewState": "AgIAAIoAAAAAAAAAAAAAAJgAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-04-07T16:37:05.604Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Checkout.cshtml",
-              "DocumentMoniker": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\Pages\\Checkout.cshtml",
-              "RelativeDocumentMoniker": "ShopWeb\\Pages\\Checkout.cshtml",
-              "ToolTip": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\Pages\\Checkout.cshtml",
-              "RelativeToolTip": "ShopWeb\\Pages\\Checkout.cshtml",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-04-07T16:36:52.334Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "OrderHistory.cshtml",
-              "DocumentMoniker": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\Pages\\OrderHistory.cshtml",
-              "RelativeDocumentMoniker": "ShopWeb\\Pages\\OrderHistory.cshtml",
-              "ToolTip": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\Pages\\OrderHistory.cshtml",
-              "RelativeToolTip": "ShopWeb\\Pages\\OrderHistory.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-04-07T16:36:15.009Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Signin.cshtml",
-              "DocumentMoniker": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\Pages\\Signin.cshtml",
-              "RelativeDocumentMoniker": "ShopWeb\\Pages\\Signin.cshtml",
-              "ToolTip": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\Pages\\Signin.cshtml",
-              "RelativeToolTip": "ShopWeb\\Pages\\Signin.cshtml",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-04-07T16:29:49.328Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\Pages\\Index.cshtml",
-              "RelativeDocumentMoniker": "ShopWeb\\Pages\\Index.cshtml",
-              "ToolTip": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\Pages\\Index.cshtml",
-              "RelativeToolTip": "ShopWeb\\Pages\\Index.cshtml",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAAAEwAAABSAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-04-06T19:53:50.223Z",
+              "Title": "ForgotPassword.cshtml.cs",
+              "DocumentMoniker": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\Pages\\ForgotPassword.cshtml.cs",
+              "RelativeDocumentMoniker": "ShopWeb\\Pages\\ForgotPassword.cshtml.cs",
+              "ToolTip": "D:\\Hoc_Tap\\2025-2026_HK2\\Agile\\FastFoodOrdering.UI\\ShopWeb\\Pages\\ForgotPassword.cshtml.cs",
+              "RelativeToolTip": "ShopWeb\\Pages\\ForgotPassword.cshtml.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAADwvycAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T18:51:02.985Z",
               "EditorCaption": ""
             }
           ]

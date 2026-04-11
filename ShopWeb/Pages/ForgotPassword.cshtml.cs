@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Text;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 
 [IgnoreAntiforgeryToken]
 public class ForgotPasswordModel : PageModel
@@ -36,6 +37,24 @@ public class ForgotPasswordModel : PageModel
     // ==========================================================
     public async Task<JsonResult> OnPostResetPasswordAsync([FromBody] ResetPasswordReq req)
     {
+        // 1. KIỂM TRA MẬT KHẨU CÓ KHỚP NHAU KHÔNG
+        if (req.newPassword != req.confirmPassword)
+        {
+            return new JsonResult(new { success = false, message = "Mật khẩu xác nhận không khớp!" });
+        }
+
+        // 2. KIỂM TRA ĐỊNH DẠNG MẬT KHẨU (Giống trang Đăng ký)
+        var passRegex = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$");
+        if (string.IsNullOrWhiteSpace(req.newPassword) || !passRegex.IsMatch(req.newPassword))
+        {
+            return new JsonResult(new
+            {
+                success = false,
+                message = "Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường và số."
+            });
+        }
+
+        // 3. NẾU MỌI THỨ ĐÃ CHUẨN MỰC, TIẾN HÀNH GỌI API
         using var client = new HttpClient();
         var content = new StringContent(JsonSerializer.Serialize(req), Encoding.UTF8, "application/json");
 
@@ -46,7 +65,8 @@ public class ForgotPasswordModel : PageModel
             return new JsonResult(new { success = true });
         }
 
-        return new JsonResult(new { success = false, message = "Mã OTP không đúng, đã hết hạn hoặc dữ liệu không hợp lệ!" });
+        
+        return new JsonResult(new { success = false, message = "Mã OTP không đúng hoặc đã hết hạn!" });
     }
 }
 

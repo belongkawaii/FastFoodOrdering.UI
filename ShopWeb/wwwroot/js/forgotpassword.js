@@ -127,3 +127,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+function togglePassword(inputId, icon) {
+    const input = document.getElementById(inputId);
+    if (input.type === "password") {
+        input.type = "text"; // Hiện chữ
+        icon.textContent = "🙈"; // Đổi thành nhắm mắt
+    } else {
+        input.type = "password"; // Giấu chữ
+        icon.textContent = "👁️"; // Đổi thành mở mắt
+    }
+}

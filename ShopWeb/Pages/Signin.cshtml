@@ -26,7 +26,11 @@
                     <input asp-for="Email" placeholder="Email" required />
                     <span asp-validation-for="Email" class="error hidden"></span>
 
-                    <input asp-for="Password" type="password" placeholder="Mật khẩu" required />
+                    <div class="password-wrapper">
+                        <input asp-for="Password" id="password" type="password" placeholder="Mật khẩu" required />
+    
+                        <span class="toggle-password" onclick="togglePassword('password', this)">👁️</span>
+                    </div>
                     <span asp-validation-for="Password" class="error hidden"></span>
 
                     @if (TempData["ErrorMessageLogin"] != null)
@@ -63,4 +67,15 @@
     Swal.fire({ icon: 'error', title: 'Rất tiếc...', text: errorMsg, confirmButtonColor: '#d33' });
     }
     });
+
+    function togglePassword(inputId, icon) {
+    const input = document.getElementById(inputId);
+    if (input.type === "password") {
+    input.type = "text";
+    icon.textContent = "🙈";
+    } else {
+    input.type = "password";
+    icon.textContent = "👁️";
+    }
+    }
 </script>
